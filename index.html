@@ -197,6 +197,7 @@
     width: 100%;
     display: block;
     border-radius: 16px;
+    object-fit: cover;
   }
 
   /* DIVIDER */
@@ -759,6 +760,64 @@
     line-height: 1.6;
   }
 
+  /* ORDER FORM */
+  .order-form {
+    max-width: 480px;
+    margin: 0 auto 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(253,248,245,0.45);
+  }
+
+  .form-group input,
+  .form-group select {
+    background: var(--dark2);
+    border: 1px solid rgba(244,167,185,0.2);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-group input::placeholder {
+    color: rgba(253,248,245,0.25);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--pink);
+  }
+
+  .form-group select option {
+    background: var(--dark2);
+    color: var(--cream);
+  }
+
   /* SUCCESS MESSAGE */
   .success-msg {
     display: none;
@@ -825,6 +884,9 @@
   <div class="hero-cta">
     <a href="#preorder" class="btn-primary">Pre-Order Now ⚡</a>
     <p class="hero-trust">First 50 orders only &nbsp;·&nbsp; Free shipping &nbsp;·&nbsp; Ships in 6 weeks</p>
+  </div>
+  <div class="hero-product">
+    <img src="product.jpg" alt="MELT Morning and Night Strips" />
   </div>
 </div>
 
@@ -1078,15 +1140,66 @@
 <div class="cta-section fade-up" id="preorder">
   <p class="section-eyebrow">Pre-Order</p>
   <h2 class="cta-title">Join the<br>first 50. 🖤</h2>
-  <p class="cta-sub">Pre-orders are open. First 50 customers get free shipping and first batch priority delivery. Ships in 6 weeks.</p>
+  <p class="cta-sub">Fill your details below. We'll confirm your order on WhatsApp within 24 hours.</p>
 
-  <div class="whatsapp-form">
-    <input type="tel" class="whatsapp-input" id="phone" placeholder="Enter your WhatsApp number" maxlength="10">
-    <a id="wa-btn" href="#" class="btn-whatsapp" onclick="handleOrder(event)">Reserve My Spot ⚡</a>
-  </div>
+  <div class="order-form">
 
-  <div class="success-msg" id="success">
-    <p>Your spot is reserved! 🖤<br>We'll WhatsApp you within 24 hours to confirm your order.<br><br>— Karan, Founder MELT</p>
+    <div class="form-group">
+      <label>Full Name *</label>
+      <input type="text" id="f-name" placeholder="Your full name" />
+    </div>
+
+    <div class="form-group">
+      <label>WhatsApp Number *</label>
+      <input type="tel" id="f-phone" placeholder="10-digit number" maxlength="10" />
+    </div>
+
+    <div class="form-group">
+      <label>Choose Your Kit *</label>
+      <select id="f-kit">
+        <option value="">Select a kit</option>
+        <option value="Complete Kit ₹1299/month">🖤 Complete Kit — ₹1299/month (Recommended)</option>
+        <option value="Morning Strip ₹799/month">🌅 Morning Strip only — ₹799/month</option>
+        <option value="Night Strip ₹699/month">🌙 Night Strip only — ₹699/month</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Delivery Address *</label>
+      <input type="text" id="f-address" placeholder="House no, Street, Area" />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>City *</label>
+        <input type="text" id="f-city" placeholder="Your city" />
+      </div>
+      <div class="form-group">
+        <label>Pincode *</label>
+        <input type="text" id="f-pin" placeholder="6-digit pincode" maxlength="6" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Skin Type (optional)</label>
+      <select id="f-skin">
+        <option value="Not specified">Select skin type</option>
+        <option value="Oily skin">Oily</option>
+        <option value="Dry skin">Dry</option>
+        <option value="Combination skin">Combination</option>
+        <option value="Sensitive skin">Sensitive</option>
+        <option value="Normal skin">Normal</option>
+      </select>
+    </div>
+
+    <button class="btn-whatsapp" onclick="handleOrder(event)">
+      Reserve My Spot on WhatsApp ⚡
+    </button>
+
+    <div class="success-msg" id="success">
+      <p>Opening WhatsApp now! 🖤<br>Your details are prefilled. Just tap Send.<br>We'll confirm within 24 hours.<br><br>— Karan, Founder MELT</p>
+    </div>
+
   </div>
 
   <div class="cta-badges">
@@ -1129,17 +1242,39 @@
   // WhatsApp order handler
   function handleOrder(e) {
     e.preventDefault();
-    const phone = document.getElementById('phone').value.trim();
-    if (phone.length < 10) {
-      alert('Please enter your 10-digit WhatsApp number');
-      return;
-    }
-    // Open WhatsApp with prefilled message
-    const msg = encodeURIComponent('Hi MELT! I want to pre-order the Complete Kit ₹1299 🖤 Please confirm my spot. My number: ' + phone);
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const kit     = document.getElementById('f-kit').value;
+    const address = document.getElementById('f-address').value.trim();
+    const city    = document.getElementById('f-city').value.trim();
+    const pin     = document.getElementById('f-pin').value.trim();
+    const skin    = document.getElementById('f-skin').value;
+
+    if (!name)    { alert('Please enter your full name'); return; }
+    if (phone.length < 10) { alert('Please enter your 10-digit WhatsApp number'); return; }
+    if (!kit)     { alert('Please select a kit'); return; }
+    if (!address) { alert('Please enter your delivery address'); return; }
+    if (!city)    { alert('Please enter your city'); return; }
+    if (pin.length < 6) { alert('Please enter your 6-digit pincode'); return; }
+
+    const msg = encodeURIComponent(
+`Hi MELT! I want to pre-order 🖤
+
+Name: ${name}
+WhatsApp: ${phone}
+Kit: ${kit}
+Address: ${address}, ${city} - ${pin}
+Skin Type: ${skin}
+
+Please confirm my spot!`
+    );
+
     window.open('https://wa.me/918054956174?text=' + msg, '_blank');
-    // Show success message
     document.getElementById('success').classList.add('show');
-    document.getElementById('phone').value = '';
+    // Clear form
+    ['f-name','f-phone','f-address','f-city','f-pin'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-kit').value = '';
+    document.getElementById('f-skin').value = 'Not specified';
   }
 </script>
 </body>
