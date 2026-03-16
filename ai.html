@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MELT AI — Your Personal Skin Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #1C1C1C;
+    --cream: #FDF8F5;
+    --pink: #F4A7B9;
+    --rose: #C47A8A;
+    --dark2: #242424;
+    --dark3: #2E2E2E;
+    --glow: rgba(244,167,185,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(28,28,28,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(244,167,185,0.1);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .logo span {
+    color: var(--pink);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-left: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .back-btn {
+    font-size: 12px;
+    color: rgba(253,248,245,0.5);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .back-btn:hover { color: var(--pink); }
+
+  /* HERO */
+  .hero {
+    padding: 120px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(244,167,185,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(244,167,185,0.1);
+    border: 1px solid rgba(244,167,185,0.25);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 9vw, 64px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .hero p {
+    font-size: 15px;
+    color: rgba(253,248,245,0.5);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  /* NAV TABS */
+  .tabs {
+    display: flex;
+    gap: 0;
+    background: var(--dark2);
+    border: 1px solid rgba(244,167,185,0.12);
+    border-radius: 16px;
+    padding: 6px;
+    max-width: 500px;
+    margin: 0 auto 60px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 12px 8px;
+    border-radius: 12px;
+    border: none;
+    background: transparent;
+    color: rgba(253,248,245,0.4);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .tab.active {
+    background: var(--pink);
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  .tab-icon { display: block; font-size: 18px; margin-bottom: 4px; }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  .section.active { display: block; }
+
+  /* ==================== */
+  /* FEATURE 1: SKIN QUIZ */
+  /* ==================== */
+
+  .quiz-card {
+    background: var(--dark2);
+    border: 1px solid rgba(244,167,185,0.15);
+    border-radius: 24px;
+    padding: 32px 24px;
+  }
+
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; }
+
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(244,167,185,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .step-dot.active {
+    background: var(--pink);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .step-dot.done { background: rgba(244,167,185,0.5); }
+
+  .quiz-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .quiz-sub {
+    font-size: 13px;
+    color: rgba(253,248,245,0.4);
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quiz-option {
+    background: var(--dark3);
+    border: 1px solid rgba(253,248,245,0.06);
+    border-radius: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .quiz-option:hover {
+    border-color: rgba(244,167,185,0.3);
+    background: rgba(244,167,185,0.05);
+  }
+
+  .quiz-option.selected {
+    border-color: var(--pink);
+    background: rgba(244,167,185,0.08);
+  }
+
+  .option-icon { font-size: 22px; flex-shrink: 0; }
+
+  .option-text h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 2px;
+  }
+
+  .option-text p {
+    font-size: 12px;
+    color: rgba(253,248,245,0.4);
+  }
+
+  .quiz-nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .btn-back {
+    flex: 1;
+    padding: 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(244,167,185,0.2);
+    background: transparent;
+    color: rgba(253,248,245,0.5);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-back:hover { border-color: var(--pink); color: var(--pink); }
+
+  .btn-next {
+    flex: 2;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    background: var(--pink);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-next:hover { background: var(--cream); }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* QUIZ RESULT */
+  .quiz-result {
+    display: none;
+    text-align: center;
+  }
+
+  .quiz-result.show { display: block; }
+
+  .result-badge {
+    display: inline-block;
+    background: rgba(244,167,185,0.1);
+    border: 1px solid rgba(244,167,185,0.3);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 20px;
+  }
+
+  .result-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .result-analysis {
+    background: var(--dark3);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+  }
+
+  .result-analysis-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+
+  .result-analysis p {
+    font-size: 14px;
+    color: rgba(253,248,245,0.7);
+    line-height: 1.7;
+  }
+
+  .result-kit {
+    background: linear-gradient(135deg, rgba(244,167,185,0.1) 0%, transparent 100%);
+    border: 1.5px solid rgba(244,167,185,0.4);
+    border-radius: 20px;
+    padding: 24px;
+    margin: 20px 0;
+    text-align: left;
+  }
+
+  .result-kit-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 8px;
+  }
+
+  .result-kit h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .result-kit p {
+    font-size: 13px;
+    color: rgba(253,248,245,0.5);
+    margin-bottom: 16px;
+  }
+
+  .result-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .ingredient-tag {
+    background: rgba(244,167,185,0.1);
+    border: 1px solid rgba(244,167,185,0.2);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--pink);
+  }
+
+  .ai-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+    color: rgba(253,248,245,0.4);
+    font-size: 13px;
+  }
+
+  .ai-loading-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .ai-loading-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+    animation: pulse 1.2s ease infinite;
+  }
+
+  .ai-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .ai-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ========================= */
+  /* FEATURE 2: INGREDIENT AI  */
+  /* ========================= */
+
+  .ingredient-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .ingredient-card {
+    background: var(--dark2);
+    border: 1px solid rgba(253,248,245,0.06);
+    border-radius: 16px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+  }
+
+  .ingredient-card:hover {
+    border-color: rgba(244,167,185,0.3);
+    transform: translateY(-2px);
+  }
+
+  .ingredient-card.active {
+    border-color: var(--pink);
+    background: rgba(244,167,185,0.06);
+  }
+
+  .ingredient-emoji { font-size: 28px; margin-bottom: 8px; display: block; }
+
+  .ingredient-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .ingredient-card p {
+    font-size: 11px;
+    color: rgba(253,248,245,0.35);
+  }
+
+  .ingredient-strip-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 50px;
+    margin-top: 6px;
+  }
+
+  .badge-am {
+    background: rgba(255,200,100,0.1);
+    color: #FFC864;
+    border: 1px solid rgba(255,200,100,0.2);
+  }
+
+  .badge-pm {
+    background: rgba(150,100,255,0.1);
+    color: #A078FF;
+    border: 1px solid rgba(150,100,255,0.2);
+  }
+
+  .badge-both {
+    background: rgba(244,167,185,0.1);
+    color: var(--pink);
+    border: 1px solid rgba(244,167,185,0.2);
+  }
+
+  .ingredient-result {
+    background: var(--dark2);
+    border: 1px solid rgba(244,167,185,0.2);
+    border-radius: 20px;
+    padding: 24px;
+    min-height: 120px;
+  }
+
+  .ingredient-result-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .ingredient-result-emoji { font-size: 32px; }
+
+  .ingredient-result-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .ingredient-result-header p {
+    font-size: 12px;
+    color: rgba(253,248,245,0.35);
+  }
+
+  .ingredient-result-body {
+    font-size: 14px;
+    color: rgba(253,248,245,0.65);
+    line-height: 1.75;
+  }
+
+  .ingredient-placeholder {
+    text-align: center;
+    padding: 20px;
+    color: rgba(253,248,245,0.25);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* ========================= */
+  /* FEATURE 3: WHATSAPP BOT   */
+  /* ========================= */
+
+  .chat-window {
+    background: var(--dark2);
+    border: 1px solid rgba(244,167,185,0.15);
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-header {
+    background: var(--dark3);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(244,167,185,0.1);
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .chat-header-info h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  .chat-header-info p {
+    font-size: 11px;
+    color: #4ADE80;
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .msg {
+    max-width: 80%;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .msg-bot { align-self: flex-start; }
+  .msg-user { align-self: flex-end; }
+
+  .msg-bubble {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .msg-bot .msg-bubble {
+    background: var(--dark3);
+    border: 1px solid rgba(244,167,185,0.1);
+    color: var(--cream);
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg-user .msg-bubble {
+    background: var(--pink);
+    color: var(--black);
+    border-bottom-right-radius: 4px;
+    font-weight: 400;
+  }
+
+  .msg-time {
+    font-size: 10px;
+    color: rgba(253,248,245,0.25);
+    margin-top: 4px;
+    padding: 0 4px;
+  }
+
+  .msg-user .msg-time { text-align: right; }
+
+  .chat-options {
+    padding: 12px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid rgba(244,167,185,0.08);
+    background: rgba(28,28,28,0.5);
+  }
+
+  .chat-opt-btn {
+    background: var(--dark3);
+    border: 1px solid rgba(244,167,185,0.2);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--pink);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .chat-opt-btn:hover {
+    background: rgba(244,167,185,0.1);
+    border-color: var(--pink);
+  }
+
+  .chat-input-area {
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(244,167,185,0.08);
+  }
+
+  .chat-input {
+    flex: 1;
+    background: var(--dark3);
+    border: 1px solid rgba(244,167,185,0.15);
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+  }
+
+  .chat-input::placeholder { color: rgba(253,248,245,0.25); }
+  .chat-input:focus { border-color: rgba(244,167,185,0.35); }
+
+  .chat-send {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--pink);
+    border: none;
+    color: var(--black);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chat-send:hover { background: var(--cream); transform: scale(1.05); }
+
+  /* TYPING INDICATOR */
+  .typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 14px;
+    background: var(--dark3);
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+    width: fit-content;
+  }
+
+  .typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(244,167,185,0.5);
+    animation: pulse 1s ease infinite;
+  }
+
+  .typing span:nth-child(2) { animation-delay: 0.15s; }
+  .typing span:nth-child(3) { animation-delay: 0.3s; }
+
+  /* WA RESULT CARD */
+  .wa-result-card {
+    background: linear-gradient(135deg, rgba(244,167,185,0.08), transparent);
+    border: 1.5px solid rgba(244,167,185,0.35);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  .wa-result-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .wa-result-card p {
+    font-size: 12px;
+    color: rgba(253,248,245,0.5);
+    margin-bottom: 12px;
+  }
+
+  .wa-order-btn {
+    display: block;
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .wa-order-btn:hover { background: var(--cream); }
+
+  /* SHARED */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 7vw, 42px);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: rgba(253,248,245,0.45);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .btn-wa {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border-radius: 50px;
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-top: 20px;
+  }
+
+  .btn-wa:hover { background: var(--cream); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(253,248,245,0.05);
+    font-size: 12px;
+    color: rgba(253,248,245,0.2);
+  }
+
+  footer a { color: var(--pink); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">MELT <span>AI</span></a>
+  <a href="index.html" class="back-btn">← Back to MELT</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✦ Powered by AI · Built for Indian Skin</div>
+  <h1>Your personal<br><em>skin intelligence.</em></h1>
+  <p>Three AI tools in one place — find your perfect MELT formula, understand every ingredient, and get an instant recommendation.</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab(0)">
+      <span class="tab-icon">🔬</span>Skin Quiz
+    </button>
+    <button class="tab" onclick="switchTab(1)">
+      <span class="tab-icon">🌿</span>Ingredients
+    </button>
+    <button class="tab" onclick="switchTab(2)">
+      <span class="tab-icon">💬</span>AI Advisor
+    </button>
+  </div>
+</div>
+
+<!-- ============== -->
+<!-- SECTION 1: QUIZ -->
+<!-- ============== -->
+<div class="section active" id="section-0">
+  <p class="section-label">Skin Quiz</p>
+  <h2 class="section-title">Find your<br>perfect formula.</h2>
+  <p class="section-desc">Answer 5 quick questions. Our AI analyses your skin profile and recommends the exact MELT kit for you.</p>
+
+  <div class="quiz-card">
+    <div class="step-indicator">
+      <div class="step-dot active" id="dot-0"></div>
+      <div class="step-dot" id="dot-1"></div>
+      <div class="step-dot" id="dot-2"></div>
+      <div class="step-dot" id="dot-3"></div>
+      <div class="step-dot" id="dot-4"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="quiz-step active" id="step-0">
+      <h3 class="quiz-q">What's your skin type?</h3>
+      <p class="quiz-sub">Be honest — this shapes everything</p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="selectOption(0,'oily','Oily skin')">
+          <span class="option-icon">💧</span>
+          <div class="option-text"><h4>Oily</h4><p>Shiny by noon, pores visible, prone to breakouts</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(0,'dry','Dry skin')">
+          <span class="option-icon">🏜️</span>
+          <div class="option-text"><h4>Dry</h4><p>Tight feeling, flaky patches, dull complexion</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(0,'combination','Combination skin')">
+          <span class="option-icon">⚡</span>
+          <div class="option-text"><h4>Combination</h4><p>Oily T-zone, dry cheeks — the classic Indian skin type</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(0,'sensitive','Sensitive skin')">
+          <span class="option-icon">🌸</span>
+          <div class="option-text"><h4>Sensitive</h4><p>Reacts easily, redness, stings with new products</p></div>
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-next" id="next-0" onclick="nextStep(0)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="quiz-step" id="step-1">
+      <h3 class="quiz-q">Your biggest skin concern?</h3>
+      <p class="quiz-sub">Pick the one that bothers you most</p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="selectOption(1,'acne','Acne & breakouts')">
+          <span class="option-icon">😤</span>
+          <div class="option-text"><h4>Acne & Breakouts</h4><p>Pimples, blackheads, recurring spots</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(1,'pigmentation','Pigmentation')">
+          <span class="option-icon">🌑</span>
+          <div class="option-text"><h4>Dark Spots & Pigmentation</h4><p>Uneven skin tone, sun damage, dark patches</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(1,'dryness','Dryness & dullness')">
+          <span class="option-icon">✨</span>
+          <div class="option-text"><h4>Dryness & Dullness</h4><p>No glow, tired looking skin, rough texture</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(1,'ageing','Anti-ageing')">
+          <span class="option-icon">⏳</span>
+          <div class="option-text"><h4>Fine Lines & Ageing</h4><p>Early signs of ageing, loss of firmness</p></div>
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(1)">← Back</button>
+        <button class="btn-next" id="next-1" onclick="nextStep(1)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="quiz-step" id="step-2">
+      <h3 class="quiz-q">How much time do you have?</h3>
+      <p class="quiz-sub">For your morning routine</p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="selectOption(2,'2min','Under 2 minutes')">
+          <span class="option-icon">⚡</span>
+          <div class="option-text"><h4>Under 2 minutes</h4><p>I'm always in a rush</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(2,'5min','5 minutes')">
+          <span class="option-icon">⏱️</span>
+          <div class="option-text"><h4>About 5 minutes</h4><p>Quick but not rushed</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(2,'10min','10+ minutes')">
+          <span class="option-icon">🧘</span>
+          <div class="option-text"><h4>10+ minutes</h4><p>I enjoy my morning routine</p></div>
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn-next" id="next-2" onclick="nextStep(2)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="quiz-step" id="step-3">
+      <h3 class="quiz-q">Do you wear sunscreen daily?</h3>
+      <p class="quiz-sub">Be honest — no judgment!</p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="selectOption(3,'yes_spf','Yes always')">
+          <span class="option-icon">☀️</span>
+          <div class="option-text"><h4>Yes, every single day</h4><p>SPF is non-negotiable for me</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(3,'sometimes_spf','Sometimes')">
+          <span class="option-icon">🌤️</span>
+          <div class="option-text"><h4>Sometimes</h4><p>Only when going out</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(3,'no_spf','Rarely or never')">
+          <span class="option-icon">😬</span>
+          <div class="option-text"><h4>Rarely or never</h4><p>I forget or find it greasy</p></div>
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn-next" id="next-3" onclick="nextStep(3)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="quiz-step" id="step-4">
+      <h3 class="quiz-q">Your budget for skincare?</h3>
+      <p class="quiz-sub">Per month, total</p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="selectOption(4,'budget_low','Under ₹500')">
+          <span class="option-icon">💰</span>
+          <div class="option-text"><h4>Under ₹500/month</h4><p>Skincare on a tight budget</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(4,'budget_mid','₹500 - ₹1500')">
+          <span class="option-icon">💳</span>
+          <div class="option-text"><h4>₹500 – ₹1500/month</h4><p>Reasonable investment</p></div>
+        </div>
+        <div class="quiz-option" onclick="selectOption(4,'budget_high','₹1500+')">
+          <span class="option-icon">💎</span>
+          <div class="option-text"><h4>₹1500+/month</h4><p>Skin is worth investing in</p></div>
+        </div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="prevStep(4)">← Back</button>
+        <button class="btn-next" id="next-4" onclick="analyseAndShowResult()" disabled>Analyse My Skin ✦</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="quiz-result" id="quiz-result">
+      <div class="ai-loading" id="quiz-loading">
+        <span>AI is analysing your skin profile</span>
+        <div class="ai-loading-dots"><span></span><span></span><span></span></div>
+      </div>
+      <div id="quiz-result-content" style="display:none">
+        <div class="result-badge">✦ AI Analysis Complete</div>
+        <h3 class="result-title" id="result-title"></h3>
+        <div class="result-analysis">
+          <p class="result-analysis-title">Your Skin Profile</p>
+          <p id="result-analysis-text"></p>
+        </div>
+        <div class="result-kit">
+          <p class="result-kit-label">Recommended For You</p>
+          <h3 id="result-kit-name"></h3>
+          <p id="result-kit-desc"></p>
+          <div class="result-ingredients" id="result-ingredients"></div>
+          <a id="result-order-btn" href="index.html#preorder" class="btn-wa">Pre-Order This Kit ⚡</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================== -->
+<!-- SECTION 2: INGREDIENTS -->
+<!-- =================== -->
+<div class="section" id="section-1">
+  <p class="section-label">Ingredient Intelligence</p>
+  <h2 class="section-title">Every ingredient.<br>Explained by AI.</h2>
+  <p class="section-desc">Tap any ingredient to understand exactly why it's in your MELT strip and what it does for Indian skin.</p>
+
+  <div class="ingredient-grid">
+    <div class="ingredient-card" onclick="explainIngredient('neem')">
+      <span class="ingredient-emoji">🌿</span>
+      <h3>Neem</h3>
+      <p>Cleanser + Night Serum</p>
+      <span class="ingredient-strip-badge badge-both">AM + PM</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('haldi')">
+      <span class="ingredient-emoji">🟡</span>
+      <h3>Haldi</h3>
+      <p>Morning Serum</p>
+      <span class="ingredient-strip-badge badge-am">AM Strip</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('chandan')">
+      <span class="ingredient-emoji">🪵</span>
+      <h3>Chandan</h3>
+      <p>Night Oil Cleanser</p>
+      <span class="ingredient-strip-badge badge-pm">PM Strip</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('saffron')">
+      <span class="ingredient-emoji">🌸</span>
+      <h3>Kesar</h3>
+      <p>Night Cream</p>
+      <span class="ingredient-strip-badge badge-pm">PM Strip</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('bakuchiol')">
+      <span class="ingredient-emoji">🍃</span>
+      <h3>Bakuchiol</h3>
+      <p>Night Serum</p>
+      <span class="ingredient-strip-badge badge-pm">PM Strip</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('spf50')">
+      <span class="ingredient-emoji">☀️</span>
+      <h3>SPF50</h3>
+      <p>Morning Strip</p>
+      <span class="ingredient-strip-badge badge-am">AM Strip</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('hyaluronic')">
+      <span class="ingredient-emoji">💧</span>
+      <h3>Hyaluronic Acid</h3>
+      <p>Moisturiser</p>
+      <span class="ingredient-strip-badge badge-am">AM Strip</span>
+    </div>
+    <div class="ingredient-card" onclick="explainIngredient('rosewater')">
+      <span class="ingredient-emoji">🌹</span>
+      <h3>Rose Water</h3>
+      <p>Toner</p>
+      <span class="ingredient-strip-badge badge-am">AM Strip</span>
+    </div>
+  </div>
+
+  <div class="ingredient-result" id="ingredient-result">
+    <div class="ingredient-placeholder">
+      ✦ Tap any ingredient above to learn what it does for your skin
+    </div>
+  </div>
+</div>
+
+<!-- ================== -->
+<!-- SECTION 3: AI CHAT -->
+<!-- ================== -->
+<div class="section" id="section-2">
+  <p class="section-label">AI Skin Advisor</p>
+  <h2 class="section-title">Ask anything<br>about your skin.</h2>
+  <p class="section-desc">Chat with MELT's AI advisor. Ask about ingredients, routines, or get a personalised kit recommendation.</p>
+
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-avatar">🖤</div>
+      <div class="chat-header-info">
+        <h3>MELT AI Advisor</h3>
+        <p>● Online now</p>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-bot">
+        <div class="msg-bubble">Hi! 🖤 I'm MELT's AI skin advisor. I can help you find the right kit for your skin, explain our ingredients, or answer any skincare questions. What would you like to know?</div>
+        <div class="msg-time">Now</div>
+      </div>
+    </div>
+
+    <div class="chat-options" id="chat-quick-options">
+      <button class="chat-opt-btn" onclick="sendQuickMsg('Which kit is right for me?')">Which kit suits me?</button>
+      <button class="chat-opt-btn" onclick="sendQuickMsg('What ingredients are in the Morning Strip?')">Morning Strip?</button>
+      <button class="chat-opt-btn" onclick="sendQuickMsg('Is MELT good for oily skin?')">Oily skin?</button>
+      <button class="chat-opt-btn" onclick="sendQuickMsg('How does the sachet strip work?')">How it works?</button>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chat-input" placeholder="Ask about your skin..." onkeydown="if(event.key==='Enter') sendChatMsg()" />
+      <button class="chat-send" onclick="sendChatMsg()">➤</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>MELT AI · <a href="index.html">Back to main site</a> · <a href="index.html#preorder">Pre-Order Now</a></p>
+  <p style="margin-top:8px">Built with 🖤 by an 18 year old who believed · @meltskinn</p>
+</footer>
+
+<script>
+// =====================
+// TAB SWITCHING
+// =====================
+const tabs = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.section');
+
+function switchTab(i) {
+  tabs.forEach((t,idx) => t.classList.toggle('active', idx === i));
+  sections.forEach((s,idx) => s.classList.toggle('active', idx === i));
+}
+
+// =====================
+// QUIZ LOGIC
+// =====================
+let answers = {};
+let currentStep = 0;
+
+function selectOption(step, value, label) {
+  answers[step] = { value, label };
+  document.querySelectorAll(`#step-${step} .quiz-option`).forEach(o => o.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  document.getElementById(`next-${step}`).disabled = false;
+}
+
+function nextStep(step) {
+  if (!answers[step]) return;
+  document.getElementById(`step-${step}`).classList.remove('active');
+  document.getElementById(`dot-${step}`).classList.remove('active');
+  document.getElementById(`dot-${step}`).classList.add('done');
+  if (step + 1 <= 4) {
+    document.getElementById(`step-${step+1}`).classList.add('active');
+    document.getElementById(`dot-${step+1}`).classList.add('active');
+  }
+  currentStep = step + 1;
+}
+
+function prevStep(step) {
+  document.getElementById(`step-${step}`).classList.remove('active');
+  document.getElementById(`dot-${step}`).classList.remove('active');
+  document.getElementById(`step-${step-1}`).classList.add('active');
+  document.getElementById(`dot-${step-1}`).classList.remove('done');
+  document.getElementById(`dot-${step-1}`).classList.add('active');
+  currentStep = step - 1;
+}
+
+async function analyseAndShowResult() {
+  // Hide all steps, show result
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('quiz-result').classList.add('show');
+
+  const skinType = answers[0]?.label || 'combination skin';
+  const concern = answers[1]?.label || 'pigmentation';
+  const time = answers[2]?.label || '5 minutes';
+  const spf = answers[3]?.label || 'sometimes';
+  const budget = answers[4]?.label || '₹500–₹1500';
+
+  const prompt = `You are MELT's AI skin advisor. MELT is an Indian skincare brand that sells biodegradable kraft paper sachet strips.
+
+Products:
+- Complete Kit ₹1299/month: Morning Strip (Cleanser+Toner+Serum+Moisturizer+SPF50) + Night Strip (Oil Cleanser+Night Serum+Night Cream)
+- Morning Strip ₹799/month: 5 steps AM routine
+- Night Strip ₹699/month: 3 steps PM routine
+
+Key ingredients: Neem, Haldi (Turmeric), Chandan (Sandalwood), Kesar (Saffron), Bakuchiol, Rose Water, Hyaluronic Acid, SPF50 PA++++
+
+Customer profile:
+- Skin type: ${skinType}
+- Main concern: ${concern}
+- Time available: ${time}
+- SPF habit: ${spf}
+- Budget: ${budget}
+
+Give a personalised skin analysis and kit recommendation. Be warm, specific, and mention which MELT ingredients directly help their concern. Keep it under 120 words total.
+
+Reply in this exact JSON format only, no other text:
+{
+  "title": "Short personalised headline (e.g. 'Your skin needs Neem + Bakuchiol')",
+  "analysis": "2-3 sentences about their specific skin profile and what it needs",
+  "kit": "Complete Kit" or "Morning Strip" or "Night Strip",
+  "kitDesc": "One line on why this kit",
+  "ingredients": ["Neem", "Haldi", "Kesar"] (2-4 key ingredients for them)
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content[0].text.replace(/```json|```/g, '').trim();
+    const result = JSON.parse(text);
+
+    document.getElementById('quiz-loading').style.display = 'none';
+    document.getElementById('quiz-result-content').style.display = 'block';
+    document.getElementById('result-title').textContent = result.title;
+    document.getElementById('result-analysis-text').textContent = result.analysis;
+    document.getElementById('result-kit-name').textContent = result.kit + (result.kit === 'Complete Kit' ? ' — ₹1299/month' : result.kit === 'Morning Strip' ? ' — ₹799/month' : ' — ₹699/month');
+    document.getElementById('result-kit-desc').textContent = result.kitDesc;
+
+    const ingDiv = document.getElementById('result-ingredients');
+    ingDiv.innerHTML = result.ingredients.map(i => `<span class="ingredient-tag">✦ ${i}</span>`).join('');
+
+  } catch(e) {
+    // Fallback
+    document.getElementById('quiz-loading').style.display = 'none';
+    document.getElementById('quiz-result-content').style.display = 'block';
+    document.getElementById('result-title').textContent = 'Complete Kit is perfect for you 🖤';
+    document.getElementById('result-analysis-text').textContent = `Based on your ${skinType} and focus on ${concern}, your skin needs a complete AM+PM routine. The Complete Kit gives you all 8 steps — from SPF protection in the morning to Bakuchiol repair at night.`;
+    document.getElementById('result-kit-name').textContent = 'Complete Kit — ₹1299/month';
+    document.getElementById('result-kit-desc').textContent = 'Best value for your skin profile';
+    document.getElementById('result-ingredients').innerHTML = ['Neem','Haldi','Bakuchiol','Kesar'].map(i => `<span class="ingredient-tag">✦ ${i}</span>`).join('');
+  }
+}
+
+// =====================
+// INGREDIENT EXPLAINER
+// =====================
+const ingredientData = {
+  neem: { emoji: '🌿', name: 'Neem', strip: 'AM Cleanser + PM Night Serum' },
+  haldi: { emoji: '🟡', name: 'Haldi (Turmeric)', strip: 'AM Serum' },
+  chandan: { emoji: '🪵', name: 'Chandan (Sandalwood)', strip: 'PM Oil Cleanser' },
+  saffron: { emoji: '🌸', name: 'Kesar (Saffron)', strip: 'PM Night Cream' },
+  bakuchiol: { emoji: '🍃', name: 'Bakuchiol', strip: 'PM Night Serum' },
+  spf50: { emoji: '☀️', name: 'SPF50 PA++++', strip: 'AM Strip Step 5' },
+  hyaluronic: { emoji: '💧', name: 'Hyaluronic Acid', strip: 'AM Moisturiser' },
+  rosewater: { emoji: '🌹', name: 'Rose Water', strip: 'AM Toner' }
+};
+
+async function explainIngredient(key) {
+  const ing = ingredientData[key];
+
+  document.querySelectorAll('.ingredient-card').forEach(c => c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  const resultDiv = document.getElementById('ingredient-result');
+  resultDiv.innerHTML = `
+    <div class="ingredient-result-header">
+      <span class="ingredient-result-emoji">${ing.emoji}</span>
+      <div>
+        <h3>${ing.name}</h3>
+        <p>${ing.strip}</p>
+      </div>
+    </div>
+    <div class="ai-loading">
+      <span>AI is researching ${ing.name}</span>
+      <div class="ai-loading-dots"><span></span><span></span><span></span></div>
+    </div>`;
+
+  const prompt = `You are MELT's ingredient expert. MELT is a premium Indian skincare brand using traditional Indian ingredients in modern biodegradable sachet strips.
+
+Explain the ingredient "${ing.name}" in a warm, knowledgeable way for an Indian girl aged 16-24. Cover:
+1. What it does for skin (specific benefits)
+2. Why it's especially good for Indian skin
+3. How it works in the MELT formula (it's in: ${ing.strip})
+
+Keep it conversational, under 80 words. No bullet points. Just flowing text. End with one line about why MELT chose this ingredient.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content[0].text;
+
+    resultDiv.innerHTML = `
+      <div class="ingredient-result-header">
+        <span class="ingredient-result-emoji">${ing.emoji}</span>
+        <div>
+          <h3>${ing.name}</h3>
+          <p>${ing.strip}</p>
+        </div>
+      </div>
+      <div class="ingredient-result-body">${text}</div>`;
+
+  } catch(e) {
+    resultDiv.innerHTML = `
+      <div class="ingredient-result-header">
+        <span class="ingredient-result-emoji">${ing.emoji}</span>
+        <div><h3>${ing.name}</h3><p>${ing.strip}</p></div>
+      </div>
+      <div class="ingredient-result-body">Tap to discover the benefits of ${ing.name} — a key ingredient in your MELT strip, chosen specifically for Indian skin.</div>`;
+  }
+}
+
+// =====================
+// AI CHAT
+// =====================
+const chatHistory = [];
+const systemPrompt = `You are MELT's friendly AI skin advisor. MELT is India's first daily skincare sachet strip brand — biodegradable kraft paper strips with Indian ingredients.
+
+Products:
+- Complete Kit ₹1299/month: Morning Strip (5 steps: Neem Cleanser, Rose Water Toner, Vitamin C+Haldi Serum, Hyaluronic Moisturiser, SPF50) + Night Strip (3 steps: Micellar+Chandan Cleanser, Neem+Bakuchiol Serum, Saffron+Shea Cream)
+- Morning Strip ₹799/month
+- Night Strip ₹699/month
+
+You are warm, knowledgeable, and speak like a helpful Indian friend. Keep replies short (2-4 sentences max). Always end with a nudge toward pre-ordering if relevant. Use occasional emojis. Never give medical advice.`;
+
+async function sendChatMsg() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  document.getElementById('chat-quick-options').style.display = 'none';
+  addMessage('user', msg);
+  await getBotReply(msg);
+}
+
+function sendQuickMsg(msg) {
+  document.getElementById('chat-quick-options').style.display = 'none';
+  addMessage('user', msg);
+  getBotReply(msg);
+}
+
+function addMessage(role, text) {
+  const messagesDiv = document.getElementById('chat-messages');
+  const now = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+  const div = document.createElement('div');
+  div.className = `msg msg-${role === 'user' ? 'user' : 'bot'}`;
+  div.innerHTML = `<div class="msg-bubble">${text}</div><div class="msg-time">${now}</div>`;
+  messagesDiv.appendChild(div);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  chatHistory.push({ role: role === 'user' ? 'user' : 'assistant', content: text });
+}
+
+function showTyping() {
+  const messagesDiv = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg msg-bot';
+  div.id = 'typing-indicator';
+  div.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
+  messagesDiv.appendChild(div);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+
+async function getBotReply(userMsg) {
+  showTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [...chatHistory]
+      })
+    });
+
+    const data = await res.json();
+    const reply = data.content[0].text;
+    removeTyping();
+    addMessage('bot', reply);
+
+    // Show pre-order button if recommendation made
+    if (reply.toLowerCase().includes('complete kit') || reply.toLowerCase().includes('pre-order') || reply.toLowerCase().includes('₹1299')) {
+      const messagesDiv = document.getElementById('chat-messages');
+      const card = document.createElement('div');
+      card.className = 'msg msg-bot';
+      card.innerHTML = `<div class="wa-result-card">
+        <h4>Complete Kit 🖤</h4>
+        <p>Morning + Night · ₹1299/month · Free shipping</p>
+        <a href="index.html#preorder" class="wa-order-btn">Pre-Order Now ⚡</a>
+      </div>`;
+      messagesDiv.appendChild(card);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+  } catch(e) {
+    removeTyping();
+    addMessage('bot', "Sorry, I'm having a moment 😅 Try asking me again! For quick help, DM us @meltskinn on Instagram 🖤");
+  }
+}
+</script>
+</body>
+</html>
