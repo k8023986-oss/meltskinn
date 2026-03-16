@@ -720,6 +720,107 @@
     gap: 6px;
   }
 
+  /* AI BANNER */
+  .ai-banner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  .ai-banner-inner {
+    background: linear-gradient(135deg, rgba(244,167,185,0.08) 0%, rgba(28,28,28,0.8) 100%);
+    border: 1.5px solid rgba(244,167,185,0.3);
+    border-radius: 24px;
+    padding: 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-banner-inner::before {
+    content: '🤖';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.04;
+    right: -20px;
+    top: -20px;
+    pointer-events: none;
+  }
+
+  .ai-banner-badge {
+    display: inline-block;
+    background: rgba(244,167,185,0.12);
+    border: 1px solid rgba(244,167,185,0.25);
+    border-radius: 50px;
+    padding: 5px 14px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .ai-banner h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 6vw, 32px);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .ai-banner p {
+    font-size: 14px;
+    color: rgba(253,248,245,0.45);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ai-features-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .ai-feature-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(253,248,245,0.5);
+  }
+
+  .ai-feature-pill span:first-child {
+    font-size: 16px;
+  }
+
+  .btn-ai {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-ai:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(244,167,185,0.25);
+  }
+
   /* FOOTER */
   footer {
     border-top: 1px solid rgba(253,248,245,0.06);
@@ -1124,6 +1225,23 @@
   </div>
   <p class="pricing-chai">☕ ₹43/day. Less than one chai. For your entire skincare routine.</p>
 </section>
+
+<div class="divider"></div>
+
+<!-- AI BANNER -->
+<div class="ai-banner fade-up">
+  <div class="ai-banner-inner">
+    <p class="ai-banner-badge">✦ New · Powered by AI</p>
+    <h3>Not sure which kit<br>is right for your skin?</h3>
+    <p>Take our free AI skin quiz. Answer 5 questions and get a personalised MELT formula recommendation in seconds.</p>
+    <div class="ai-features-row">
+      <div class="ai-feature-pill"><span>🔬</span><span>AI Skin Quiz</span></div>
+      <div class="ai-feature-pill"><span>🌿</span><span>Ingredient Explainer</span></div>
+      <div class="ai-feature-pill"><span>💬</span><span>AI Skin Advisor</span></div>
+    </div>
+    <a href="ai.html" class="btn-ai">Analyse My Skin — Free ✦</a>
+  </div>
+</div>
 
 <div class="divider"></div>
 
