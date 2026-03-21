@@ -239,7 +239,15 @@
       background: #222;
       padding: 48px 40px;
     }
-    .problem-icon { font-size: 36px; margin-bottom: 20px; }
+    .problem-icon {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--pink);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
     .problem-card h3 {
       font-family: var(--font-display);
       font-size: 24px;
@@ -387,7 +395,11 @@
       border-color: var(--pink);
       transform: translateY(-4px);
     }
-    .why-icon { font-size: 32px; margin-bottom: 20px; }
+    .why-icon {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
     .why-card h3 {
       font-family: var(--font-display);
       font-size: 22px;
@@ -396,42 +408,7 @@
     }
     .why-card p { font-size: 13px; color: #666; line-height: 1.7; }
 
-    /* COMPARISON TABLE */
-    .compare { background: var(--cream); }
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 60px;
-      font-size: 14px;
-    }
-    .compare-table th {
-      padding: 16px 20px;
-      text-align: left;
-      font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-bottom: 2px solid var(--black);
-    }
-    .compare-table th:first-child { width: 35%; }
-    .compare-table th.melt-col {
-      background: var(--black);
-      color: var(--white);
-      text-align: center;
-    }
-    .compare-table td {
-      padding: 14px 20px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      color: #555;
-    }
-    .compare-table td.melt-col {
-      background: rgba(232,180,184,0.1);
-      text-align: center;
-      font-weight: 500;
-      color: var(--black);
-    }
-    .check { color: #4caf50; font-size: 16px; }
-    .cross { color: #ccc; }
+
 
     /* TRAVEL */
     .travel {
@@ -507,7 +484,13 @@
       border-radius: 20px;
       margin-bottom: 20px;
     }
-    .price-icon { font-size: 32px; margin-bottom: 16px; }
+    .price-icon {
+      font-family: var(--font-display);
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-style: italic;
+    }
     .price-name {
       font-family: var(--font-display);
       font-size: 28px;
@@ -816,8 +799,6 @@
       .faq-grid { grid-template-columns: 1fr; }
       .faq-item { border-right: none; }
       footer { flex-direction: column; padding: 40px 24px; text-align: center; }
-      .compare-table { font-size: 12px; }
-      .compare-table th, .compare-table td { padding: 10px 12px; }
     }
   </style>
 </head>
@@ -826,27 +807,27 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">MELT</a>
-  <a href="#preorder" class="nav-cta">Pre-Order ⚡</a>
+  <a href="#preorder" class="nav-cta">Pre-Order</a>
 </nav>
 
 <!-- ANNOUNCEMENT -->
 <div class="announcement">
-  🔒 Only <span>43 spots</span> remaining in the first batch · Free shipping on all pre-orders
+  First batch · <span>50 units only</span> · Free shipping across India
 </div>
 
 <!-- HERO -->
 <section class="hero" style="padding:0;">
   <div class="hero-left">
-    <div class="hero-badge">🇮🇳 India's First · 15 Days Skin Challenge</div>
+    <div class="hero-badge">India's First · 15 Days Skin Challenge</div>
     <h1 class="hero-title">Skin that<br><em>transforms.</em><br>In 15 days.</h1>
     <p class="hero-sub">Your complete morning + night routine in one box. 8 steps. Zero bottles. Made with Neem, Haldi & Chandan.</p>
     <div class="hero-pills">
-      <span class="pill">♻️ Biodegradable packaging</span>
-      <span class="pill">🌿 8 Indian ingredients</span>
-      <span class="pill">📦 Ships in 6 weeks</span>
+      <span class="pill">Biodegradable packaging</span>
+      <span class="pill">8 Indian ingredients</span>
+      <span class="pill">Ships in 6 weeks</span>
     </div>
     <div class="hero-btns">
-      <a href="#preorder" class="btn-primary">Reserve My Spot ⚡</a>
+      <a href="#preorder" class="btn-primary">Reserve My Spot</a>
       <a href="#how" class="btn-secondary">See how it works →</a>
     </div>
   </div>
@@ -865,17 +846,17 @@
   <h2 class="section-title">Your shelf is <em>out of control.</em></h2>
   <div class="problem-grid">
     <div class="problem-card">
-      <div class="problem-icon">🧴</div>
+      <div class="problem-icon">I</div>
       <h3>Too Many Products</h3>
       <p>6 different bottles. Different brands, different prices. Complete confusion every morning before college or work.</p>
     </div>
     <div class="problem-card">
-      <div class="problem-icon">⏰</div>
+      <div class="problem-icon">II</div>
       <h3>Too Much Time</h3>
       <p>20 minutes every morning just for skincare. Figuring out what goes first, what to skip, what's finished.</p>
     </div>
     <div class="problem-card">
-      <div class="problem-icon">💸</div>
+      <div class="problem-icon">III</div>
       <h3>Too Expensive</h3>
       <p>₹3,000+ per month on multiple products. Most of it wasted in bottles you'll never fully finish.</p>
     </div>
@@ -941,13 +922,7 @@
   </div>
 </section>
 
-<!-- ALL SACHETS -->
-<section class="sachets-section">
-  <p class="section-label">What's Inside</p>
-  <h2 class="section-title" style="color:var(--white);">8 sachets. <em style="color:var(--pink);">One day.</em></h2>
-  <p class="section-sub">Every single day, this is what you get. Pre-measured. Pre-sequenced. Zero thinking required.</p>
-  <img src="sachets.jpg" alt="All 8 MELT sachets laid out" class="sachets-img" />
-</section>
+
 
 <!-- WHY MELT -->
 <section class="why">
@@ -955,63 +930,39 @@
   <h2 class="section-title">Different in <em>every way.</em></h2>
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-icon">🌿</div>
+      <div class="why-icon">✦</div>
       <h3>Indian Skin First</h3>
       <p>Neem, Haldi, Chandan, Saffron — ingredients India has trusted for 1000 years, now in precise daily doses.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">♻️</div>
+      <div class="why-icon">✦</div>
       <h3>Zero Waste</h3>
       <p>100% biodegradable kraft paper. Compostable. No plastic bottles ever. Every kit replaces 6 plastic bottles.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">💊</div>
+      <div class="why-icon">✦</div>
       <h3>Dermatologist Inspired</h3>
       <p>Exact pre-measured amounts every single day. No waste from half-empty bottles. Consistent results.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">✈️</div>
+      <div class="why-icon">✦</div>
       <h3>Travel Ready</h3>
       <p>No liquids. No leaking. Fits in your college bag. Perfect for hostel life, travel, or overnight stays.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">🔒</div>
+      <div class="why-icon">✦</div>
       <h3>Always Fresh</h3>
       <p>Each sachet is sealed individually. Zero oxidation unlike big bottles you open every day.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">📅</div>
+      <div class="why-icon">✦</div>
       <h3>Built for Consistency</h3>
       <p>The hardest part of skincare is sticking to it. DAY 1 through DAY 15 makes it impossible to skip.</p>
     </div>
   </div>
 </section>
 
-<!-- COMPARE TABLE -->
-<section class="compare">
-  <p class="section-label">vs The Rest</p>
-  <h2 class="section-title">Why MELT <em>wins.</em></h2>
-  <table class="compare-table">
-    <thead>
-      <tr>
-        <th>Feature</th>
-        <th class="melt-col">MELT ✦</th>
-        <th>Minimalist</th>
-        <th>Plum</th>
-        <th>Mamaearth</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Complete routine in 1 kit</td><td class="melt-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-      <tr><td>Day-wise organised sachets</td><td class="melt-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-      <tr><td>Biodegradable packaging</td><td class="melt-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-      <tr><td>Indian ingredients (Neem, Haldi)</td><td class="melt-col"><span class="check">✓</span></td><td>Partial</td><td>Partial</td><td>Partial</td></tr>
-      <tr><td>Pre-measured daily dose</td><td class="melt-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-      <tr><td>Price for complete kit</td><td class="melt-col">₹1,299</td><td>₹2,000+</td><td>₹2,200+</td><td>₹2,500+</td></tr>
-      <tr><td>AI skin advisor included</td><td class="melt-col"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
-    </tbody>
-  </table>
-</section>
+
 
 <!-- TRAVEL -->
 <div class="travel">
@@ -1019,36 +970,15 @@
     <p class="section-label">Built for Your Life</p>
     <h2 class="section-title">Fits in your<br><em>college bag.</em></h2>
     <p style="font-size:15px;color:#666;line-height:1.7;margin-top:16px;max-width:380px;">Hostels. Travel. Early mornings. The entire box fits easily anywhere you go. No more leaking bottles in your bag.</p>
-    <a href="#preorder" class="btn-primary" style="margin-top:36px;">Get My Kit ⚡</a>
+    <a href="#preorder" class="btn-primary" style="margin-top:36px;">Reserve My Kit</a>
   </div>
   <div class="travel-img">
     <img src="travel.jpg" alt="MELT 15 Days Challenge kit inside a college tote bag" />
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <p class="section-label">Early Feedback</p>
-  <h2 class="section-title">What people <em>are saying.</em></h2>
-  <p class="section-sub">From our early testers and pre-order community.</p>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="stars">★★★★★</div>
-      <p class="testi-text">"Finally a routine I can actually stick to. The DAY 1 to DAY 15 format means I never skip anymore."</p>
-      <div class="testi-author"><strong>Priya S.</strong><span>Delhi · College student</span></div>
-    </div>
-    <div class="testi-card">
-      <div class="stars">★★★★★</div>
-      <p class="testi-text">"I used to spend ₹3000+ a month on 6 products. MELT is literally half the price and I don't have to think."</p>
-      <div class="testi-author"><strong>Ananya R.</strong><span>Mumbai · Working professional</span></div>
-    </div>
-    <div class="testi-card">
-      <div class="stars">★★★★★</div>
-      <p class="testi-text">"The kit in my hostel bag is everything. No worrying about leaking bottles. Just open, apply, go."</p>
-      <div class="testi-author"><strong>Shreya M.</strong><span>Pune · Hostel resident</span></div>
-    </div>
-  </div>
-</section>
+<!-- SOCIAL PROOF - to be updated with real reviews -->
+
 
 <!-- PRICING -->
 <section class="pricing">
@@ -1056,7 +986,7 @@
   <h2 class="section-title">One price. <em style="color:var(--pink);">Everything included.</em></h2>
   <div class="pricing-grid">
     <div class="price-card">
-      <div class="price-icon">🌅</div>
+      <div class="price-icon">○</div>
       <p class="price-name">Morning Only</p>
       <p class="price-amount"><sup>₹</sup>799</p>
       <p class="price-period">15-day kit · Free shipping</p>
@@ -1064,13 +994,12 @@
         <li>15 Morning Sachets (Day 1–15)</li>
         <li>Cleanser · Toner · Serum</li>
         <li>Moisturiser · SPF 50</li>
-        <li>Cancel anytime</li>
       </ul>
       <a href="#preorder" class="price-cta">Pre-Order</a>
     </div>
     <div class="price-card featured">
-      <div class="price-badge">⭐ Most Popular</div>
-      <div class="price-icon">🖤</div>
+      <div class="price-badge">Most Popular</div>
+      <div class="price-icon">✦</div>
       <p class="price-name">Complete Kit</p>
       <p class="price-amount" style="color:var(--black);"><sup>₹</sup>1,299</p>
       <p class="price-period">15-day kit · Save ₹200 · Free shipping</p>
@@ -1078,13 +1007,11 @@
         <li>15 Morning + Night Sachets</li>
         <li>All 8 steps covered daily</li>
         <li>Neem, Haldi, Chandan, Saffron</li>
-        <li>AI skin advisor included</li>
-        <li>Cancel anytime</li>
       </ul>
-      <a href="#preorder" class="price-cta">Pre-Order Now ⚡</a>
+      <a href="#preorder" class="price-cta">Pre-Order Now</a>
     </div>
     <div class="price-card">
-      <div class="price-icon">🌙</div>
+      <div class="price-icon">◑</div>
       <p class="price-name">Night Only</p>
       <p class="price-amount"><sup>₹</sup>699</p>
       <p class="price-period">15-day kit · Free shipping</p>
@@ -1092,12 +1019,10 @@
         <li>15 Night Sachets (Day 1–15)</li>
         <li>Oil Cleanser · Night Serum</li>
         <li>Night Cream with Saffron</li>
-        <li>Cancel anytime</li>
       </ul>
       <a href="#preorder" class="price-cta">Pre-Order</a>
     </div>
   </div>
-  <p class="pricing-note"><span>☕</span> ₹43/day — less than one chai. For your entire skincare routine.</p>
 </section>
 
 <!-- AI SECTION -->
@@ -1106,9 +1031,9 @@
   <h2 class="section-title">Not sure which kit is<br><em>right for your skin?</em></h2>
   <p class="section-sub" style="margin:0 auto 0;color:#666;max-width:480px;">Answer 5 questions and get a personalised MELT recommendation in seconds. Free, instant, made for Indian skin.</p>
   <div class="ai-chips">
-    <span class="ai-chip">🔬 AI Skin Quiz</span>
-    <span class="ai-chip">🌿 Ingredient Explainer</span>
-    <span class="ai-chip">💬 AI Skin Advisor</span>
+    <span class="ai-chip">AI Skin Quiz</span>
+    <span class="ai-chip">Ingredient Explainer</span>
+    <span class="ai-chip">AI Skin Advisor</span>
   </div>
   <a href="ai.html" class="btn-ai">Analyse My Skin — Free ✦</a>
 </section>
@@ -1120,8 +1045,8 @@
   </div>
   <div class="story-content">
     <p class="section-label">Our Story</p>
-    <blockquote>"I'm Karan. I'm 18. I dropped college to build MELT — because every Indian girl deserves skincare that actually works, without the confusion, the expense, and the pile of half-empty bottles."</blockquote>
-    <p class="story-author">— Karan, Founder · MELT · Building from ₹0 🖤</p>
+    <blockquote>"MELT was built because Indian skin deserved better — not more products to guess at, but the right ones, in the right order, every single day."</blockquote>
+    <p class="story-author">— Karan, Founder · MELT</p>
   </div>
 </div>
 
@@ -1160,24 +1085,24 @@
 <!-- PREORDER -->
 <div class="preorder" id="preorder">
   <div class="preorder-left">
-    <p class="section-label">Join the First 50</p>
+    <p class="section-label">First Batch · 50 Units Only</p>
     <h2 class="section-title" style="color:var(--white);">Start your<br><em style="color:var(--pink);">15 day journey.</em></h2>
     <div class="preorder-features">
       <div class="preorder-feature">
-        <span class="preorder-feature-icon">📦</span>
+        <span class="preorder-feature-icon">—</span>
         <div><strong>No payment required upfront</strong><span>Confirm your spot first, pay on delivery</span></div>
       </div>
       <div class="preorder-feature">
-        <span class="preorder-feature-icon">💬</span>
+        <span class="preorder-feature-icon">—</span>
         <div><strong>Confirmed on WhatsApp in 24 hours</strong><span>Direct from the founder</span></div>
       </div>
       <div class="preorder-feature">
-        <span class="preorder-feature-icon">🚚</span>
+        <span class="preorder-feature-icon">—</span>
         <div><strong>Free shipping included</strong><span>Pan India delivery</span></div>
       </div>
       <div class="preorder-feature">
-        <span class="preorder-feature-icon">✕</span>
-        <div><strong>Cancel anytime</strong><span>No questions asked</span></div>
+        <span class="preorder-feature-icon">—</span>
+        <div><strong>First batch exclusive</strong><span>50 units only</span></div>
       </div>
     </div>
     <div class="spots-counter">
@@ -1232,11 +1157,11 @@
         <option>Normal</option>
       </select>
     </div>
-    <button class="btn-submit" onclick="submitForm()">Reserve My Spot on WhatsApp ⚡</button>
-    <p class="form-note">🔒 Your details are safe. We only use them to confirm your order.</p>
+    <button class="btn-submit" onclick="submitForm()">Reserve My Spot on WhatsApp</button>
+    <p class="form-note">Your details are only used to confirm your order.</p>
     <div class="success-msg" id="success-msg">
-      ✅ Opening WhatsApp now! Your details are prefilled — just tap Send.<br>
-      We'll confirm your spot within 24 hours. — Karan, Founder MELT 🖤
+      Opening WhatsApp now — your details are prefilled. Just tap Send.<br>
+      We'll confirm your spot within 24 hours.
     </div>
   </div>
 </div>
@@ -1246,7 +1171,7 @@
   <div>
     <div class="footer-logo">MELT</div>
     <div class="footer-tagline">Skincare that melts into you</div>
-    <div class="footer-copy">© 2026 MELT · Built from scratch by an 18 year old who believed. 🖤</div>
+    <div class="footer-copy">© 2026 MELT · All rights reserved.</div>
   </div>
   <div style="text-align:right;">
     <div style="margin-bottom:8px;"><a href="https://instagram.com/meltskinn">Follow the journey @meltskinn</a></div>
