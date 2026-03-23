@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MELT — 15 Days Skin Challenge</title>
+  <meta name="description" content="India's first 15 Days Skin Challenge. 8 steps. Morning + Night. Zero bottles. Made with Neem, Haldi & Chandan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #1a1a1a;
+      --cream: #faf8f5;
+      --pink: #e8b4b8;
+      --pink-light: #f5e6e8;
+      --kraft: #c4a882;
+      --gold: #b8976a;
+      --white: #ffffff;
+      --gray: #888;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,248,245,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,168,130,0.2);
+      padding: 0 24px;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-decoration: none;
+      color: var(--black);
+    }
+    .nav-cta {
+      background: var(--black);
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #333; }
+
+    /* ANNOUNCEMENT BAR */
+    .announcement {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 60px;
+    }
+    .announcement span { color: var(--pink); }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .hero-left {
+      padding: 80px 60px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink-light);
+      border: 1px solid var(--pink);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8b5a5e;
+      margin-bottom: 32px;
+      width: fit-content;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      color: var(--black);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+    .hero-pills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .pill {
+      background: var(--white);
+      border: 1px solid rgba(196,168,130,0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--black);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.2s;
+      width: fit-content;
+    }
+    .btn-primary:hover { background: #333; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .btn-secondary:hover { opacity: 0.6; }
+    .hero-btns { display: flex; align-items: center; gap: 32px; }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--pink-light);
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-tag {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      background: var(--white);
+      padding: 16px 20px;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    .hero-tag strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .hero-tag span { font-size: 12px; color: var(--gray); }
+
+    /* SECTION BASE */
+    section { padding: 100px 80px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      font-size: 16px;
+      color: #666;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* PROBLEM */
+    .problem { background: var(--black); color: var(--white); }
+    .problem .section-title { color: var(--white); }
+    .problem .section-label { color: var(--pink); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .problem-card {
+      background: #222;
+      padding: 48px 40px;
+    }
+    .problem-icon {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--pink);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    .problem-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    .problem-card p { color: #aaa; font-size: 14px; line-height: 1.7; }
+
+    /* COMPARISON */
+    .comparison { padding: 0; }
+    .comparison img { width: 100%; display: block; }
+
+    /* PRODUCT */
+    .product {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+    }
+    .product-img {
+      overflow: hidden;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-content {
+      padding: 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .routine-tabs {
+      display: flex;
+      gap: 0;
+      margin: 36px 0 28px;
+      border: 1px solid rgba(196,168,130,0.4);
+      border-radius: 2px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .tab {
+      padding: 10px 24px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      border: none;
+      font-family: var(--font-body);
+      color: #888;
+    }
+    .tab.active {
+      background: var(--black);
+      color: var(--white);
+    }
+    .steps-list { list-style: none; }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      background: var(--pink-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: #8b5a5e;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .step-info span { font-size: 12px; color: var(--gray); }
+
+    /* HOW IT WORKS */
+    .how { background: var(--cream); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin: 60px 0;
+    }
+    .how-card {
+      background: var(--white);
+      padding: 48px 40px;
+      position: relative;
+    }
+    .how-num {
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 300;
+      color: rgba(196,168,130,0.2);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .how-card h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .how-card p { font-size: 14px; color: #666; line-height: 1.7; }
+    .how-img { width: 100%; margin-top: 0; border-radius: 4px; overflow: hidden; }
+    .how-img img { width: 100%; display: block; }
+
+    /* SACHETS */
+    .sachets-section {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    .sachets-section .section-title { color: var(--white); }
+    .sachets-section .section-label { color: var(--pink); }
+    .sachets-section .section-sub { color: #aaa; margin: 0 auto 60px; }
+    .sachets-img { width: 100%; max-width: 900px; margin: 0 auto; display: block; border-radius: 4px; }
+
+    /* WHY MELT */
+    .why { background: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .why-card {
+      padding: 36px 32px;
+      border: 1px solid rgba(196,168,130,0.25);
+      border-radius: 4px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-card:hover {
+      border-color: var(--pink);
+      transform: translateY(-4px);
+    }
+    .why-icon {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .why-card p { font-size: 13px; color: #666; line-height: 1.7; }
+
+
+
+    /* TRAVEL */
+    .travel {
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .travel-content {
+      padding: 80px;
+      background: var(--pink-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .travel-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); text-align: center; }
+    .testimonials .section-sub { margin: 0 auto 60px; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 0;
+    }
+    .testi-card {
+      background: var(--cream);
+      padding: 36px 32px;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .stars { color: var(--gold); margin-bottom: 16px; font-size: 14px; }
+    .testi-text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .testi-author strong { display: block; font-size: 13px; font-weight: 500; }
+    .testi-author span { font-size: 12px; color: var(--gray); }
+
+    /* PRICING */
+    .pricing { background: var(--black); color: var(--white); text-align: center; }
+    .pricing .section-title { color: var(--white); }
+    .pricing .section-label { color: var(--pink); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+      text-align: left;
+    }
+    .price-card {
+      background: #1e1e1e;
+      padding: 48px 40px;
+      position: relative;
+    }
+    .price-card.featured {
+      background: var(--white);
+      color: var(--black);
+    }
+    .price-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: #6b2d34;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .price-icon {
+      font-family: var(--font-display);
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-style: italic;
+    }
+    .price-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1;
+      margin: 20px 0 4px;
+    }
+    .price-amount sup { font-size: 20px; vertical-align: super; }
+    .price-period { font-size: 12px; color: #888; margin-bottom: 32px; }
+    .price-card.featured .price-period { color: #888; }
+    .price-features { list-style: none; }
+    .price-features li {
+      padding: 8px 0;
+      font-size: 13px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .price-card.featured .price-features li {
+      color: #555;
+      border-bottom-color: rgba(0,0,0,0.06);
+    }
+    .price-features li::before { content: '—'; color: var(--gold); font-size: 12px; }
+    .price-cta {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      margin-top: 32px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+    .price-cta:hover { background: rgba(255,255,255,0.1); }
+    .price-card.featured .price-cta {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .price-card.featured .price-cta:hover { background: #333; }
+    .pricing-note {
+      margin-top: 48px;
+      font-size: 14px;
+      color: #888;
+    }
+    .pricing-note span { color: var(--pink); font-size: 20px; }
+
+    /* AI */
+    .ai-section {
+      background: linear-gradient(135deg, var(--pink-light) 0%, var(--cream) 100%);
+      text-align: center;
+    }
+    .ai-chips {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 32px 0;
+    }
+    .ai-chip {
+      background: var(--white);
+      border: 1px solid rgba(196,168,130,0.3);
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 13px;
+      color: #555;
+    }
+    .btn-ai {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--black);
+      color: var(--white);
+      padding: 16px 40px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-ai:hover { background: #333; }
+
+    /* STORY */
+    .story {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+    }
+    .story-img { overflow: hidden; }
+    .story-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .story-content {
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--cream);
+    }
+    blockquote {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.6;
+      font-style: italic;
+      color: #333;
+      margin-bottom: 24px;
+    }
+    .story-author {
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 1px;
+    }
+
+    /* FAQ */
+    .faq { background: var(--cream); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 60px;
+    }
+    .faq-item {
+      padding: 28px 32px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      border-right: 1px solid rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+    .faq-item:nth-child(even) { border-right: none; }
+    .faq-q {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .faq-q span { color: var(--gold); font-size: 18px; flex-shrink: 0; }
+    .faq-a { font-size: 13px; color: #666; line-height: 1.7; }
+
+    /* PREORDER */
+    .preorder {
+      background: var(--black);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+    }
+    .preorder-left {
+      padding: 80px;
+      border-right: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .preorder-left .section-title { color: var(--white); }
+    .preorder-left .section-label { color: var(--pink); }
+    .preorder-features { margin-top: 40px; }
+    .preorder-feature {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .preorder-feature-icon { font-size: 20px; flex-shrink: 0; }
+    .preorder-feature strong { display: block; font-size: 14px; margin-bottom: 4px; }
+    .preorder-feature span { font-size: 12px; color: #888; }
+    .spots-counter {
+      margin-top: 40px;
+      padding: 24px;
+      background: #1e1e1e;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .spots-num {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .spots-text strong { display: block; font-size: 14px; }
+    .spots-text span { font-size: 12px; color: #888; }
+
+    .preorder-right { padding: 80px; }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 300;
+      margin-bottom: 32px;
+      color: var(--white);
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      color: var(--white);
+      padding: 14px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--pink); }
+    .form-group select option { background: #1e1e1e; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      width: 100%;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      padding: 16px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--cream); }
+    .form-note {
+      font-size: 11px;
+      color: #666;
+      margin-top: 12px;
+      text-align: center;
+    }
+    .success-msg {
+      display: none;
+      background: #1e2e1e;
+      border: 1px solid #4caf50;
+      color: #a5d6a7;
+      padding: 16px;
+      border-radius: 2px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #666;
+      padding: 48px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--white);
+    }
+    .footer-tagline { font-size: 12px; color: #555; margin-top: 4px; }
+    footer a { color: var(--pink); text-decoration: none; font-size: 13px; }
+    footer a:hover { color: var(--white); }
+    .footer-copy { font-size: 12px; color: #444; margin-top: 8px; }
+
+    /* WATERMARK COVER — hides AI generator watermarks on product images */
+    .hero-right,
+    .how-img,
+    .product-img,
+    .comparison,
+    .travel-img,
+    .story-img {
+      position: relative;
+    }
+    .hero-right::after,
+    .how-img::after,
+    .product-img::after,
+    .comparison::after,
+    .travel-img::after,
+    .story-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 56px;
+      height: 56px;
+      background: inherit;
+      background-color: inherit;
+      /* Blurs and blends the corner over the watermark */
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 4px 0 0 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Per-image background color matching */
+    .hero-right::after   { background-color: var(--pink-light); }
+    .how-img::after      { background-color: #f0ede7; }
+    .product-img::after  { background-color: #e8e0d5; }
+    .comparison::after   { background-color: #e8e5e0; }
+    .travel-img::after   { background-color: #d6cfc6; }
+    .story-img::after    { background-color: #e8e5e0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      section { padding: 60px 24px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 24px; }
+      .hero-right { height: 70vw; background: var(--pink-light); }
+      .hero-right img { object-fit: contain; padding: 20px; }
+      .hero-tag { display: none; }
+      .problem-grid, .how-grid, .why-grid, .testi-grid, .pricing-grid { grid-template-columns: 1fr; gap: 2px; }
+      .product, .travel, .story, .preorder { grid-template-columns: 1fr; }
+      .product-img, .travel-img, .story-img { height: 60vw; }
+      .product-content, .travel-content, .story-content, .preorder-left, .preorder-right { padding: 48px 24px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .faq-item { border-right: none; }
+      footer { flex-direction: column; padding: 40px 24px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MELT</a>
+  <a href="#preorder" class="nav-cta">Pre-Order</a>
+</nav>
+
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  First batch · <span>50 units only</span> · Free shipping across India
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-badge">India's First · 15 Days Skin Challenge</div>
+    <h1 class="hero-title">Skin that<br><em>transforms.</em><br>In 15 days.</h1>
+    <p class="hero-sub">Your complete morning + night routine in one box. 8 steps. Zero bottles. Made with Neem, Haldi & Chandan.</p>
+    <div class="hero-pills">
+      <span class="pill">Biodegradable packaging</span>
+      <span class="pill">8 Indian ingredients</span>
+      <span class="pill">Ships in 6 weeks</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#preorder" class="btn-primary">Reserve My Spot</a>
+      <a href="#how" class="btn-secondary">See how it works →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="product.jpg" alt="MELT 15 Days Challenge box open showing day-wise sachets" />
+    <div class="hero-tag">
+      <strong>15 Days Challenge</strong>
+      <span>Morning 5 Steps · Night 3 Steps</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <p class="section-label">Simple Pricing</p>
+  <h2 class="section-title">One price. <em style="color:var(--pink);">Everything included.</em></h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-icon">○</div>
+      <p class="price-name">Morning Only</p>
+      <p class="price-amount"><sup>₹</sup>799</p>
+      <p class="price-period">15-day kit · Free shipping</p>
+      <ul class="price-features">
+        <li>15 Morning Sachets (Day 1–15)</li>
+        <li>Cleanser · Toner · Serum</li>
+        <li>Moisturiser · SPF 50</li>
+      </ul>
+      <a href="#preorder" class="price-cta">Pre-Order</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-icon">✦</div>
+      <p class="price-name">Complete Kit</p>
+      <p class="price-amount" style="color:var(--black);"><sup>₹</sup>1,299</p>
+      <p class="price-period">15-day kit · Save ₹200 · Free shipping</p>
+      <ul class="price-features">
+        <li>15 Morning + Night Sachets</li>
+        <li>All 8 steps covered daily</li>
+        <li>Neem, Haldi, Chandan, Saffron</li>
+      </ul>
+      <a href="#preorder" class="price-cta">Pre-Order Now</a>
+    </div>
+    <div class="price-card">
+      <div class="price-icon">◑</div>
+      <p class="price-name">Night Only</p>
+      <p class="price-amount"><sup>₹</sup>699</p>
+      <p class="price-period">15-day kit · Free shipping</p>
+      <ul class="price-features">
+        <li>15 Night Sachets (Day 1–15)</li>
+        <li>Oil Cleanser · Night Serum</li>
+        <li>Night Cream with Saffron</li>
+      </ul>
+      <a href="#preorder" class="price-cta">Pre-Order</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <p class="section-label">The Problem</p>
+  <h2 class="section-title">Your shelf is <em>out of control.</em></h2>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-icon">I</div>
+      <h3>Too Many Products</h3>
+      <p>6 different bottles. Different brands, different prices. Complete confusion every morning before college or work.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">II</div>
+      <h3>Too Much Time</h3>
+      <p>20 minutes every morning just for skincare. Figuring out what goes first, what to skip, what's finished.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">III</div>
+      <h3>Too Expensive</h3>
+      <p>₹3,000+ per month on multiple products. Most of it wasted in bottles you'll never fully finish.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON IMAGE -->
+<div class="comparison">
+  <img src="comparison.jpg" alt="Before MELT vs After MELT — 6 bottles vs one clean kit" />
+</div>
+
+<!-- PRODUCT / SOLUTION -->
+<div class="product" id="product">
+  <div class="product-img">
+    <img src="sachets.jpg" alt="All 8 MELT sachets — Morning 5 steps and Night 3 steps" />
+  </div>
+  <div class="product-content">
+    <p class="section-label">The Solution</p>
+    <h2 class="section-title">One box.<br>15 days. <em>Done.</em></h2>
+    <p class="section-sub" style="margin-bottom:0;">India's first complete daily skincare challenge in biodegradable kraft sachets. Made with ingredients India has trusted for centuries.</p>
+    <div class="routine-tabs">
+      <button class="tab active" onclick="showTab('morning', this)">🌅 Morning</button>
+      <button class="tab" onclick="showTab('night', this)">🌙 Night</button>
+    </div>
+    <ul class="steps-list" id="morning-steps">
+      <li class="step-item"><div class="step-num">1</div><div class="step-info"><strong>Cleanser</strong><span>Neem + Salicylic Acid · 10ml</span></div></li>
+      <li class="step-item"><div class="step-num">2</div><div class="step-info"><strong>Toner</strong><span>Rose Water + Glycerin · 5ml</span></div></li>
+      <li class="step-item"><div class="step-num">3</div><div class="step-info"><strong>Serum</strong><span>Vitamin C + Haldi · 5ml</span></div></li>
+      <li class="step-item"><div class="step-num">4</div><div class="step-info"><strong>Moisturiser</strong><span>Aloe Vera + Hyaluronic Acid · 5ml</span></div></li>
+      <li class="step-item"><div class="step-num">5</div><div class="step-info"><strong>SPF 50 PA++++</strong><span>Broad Spectrum · 15ml</span></div></li>
+    </ul>
+    <ul class="steps-list" id="night-steps" style="display:none;">
+      <li class="step-item"><div class="step-num">1</div><div class="step-info"><strong>Oil Cleanser</strong><span>Micellar + Chandan · 10ml</span></div></li>
+      <li class="step-item"><div class="step-num">2</div><div class="step-info"><strong>Night Serum</strong><span>Niacinamide + Bakuchiol · 5ml</span></div></li>
+      <li class="step-item"><div class="step-num">3</div><div class="step-info"><strong>Night Cream</strong><span>Saffron + Shea Butter · 8ml</span></div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">Three steps. <em>Every day.</em></h2>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <h3>Peel the Band</h3>
+      <p>Each day, pull out your DAY bundle. Slide off the kraft band to reveal your 8 sachets — morning and night, all sorted.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <h3>Tear & Apply</h3>
+      <p>Tear each sachet in order. Your exact daily dose — no measuring, no waste, no guessing. The sequence is done for you.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <h3>See the Glow</h3>
+      <p>A dermatologist-inspired routine in under 2 minutes. By Day 15, your skin tells the story. That's the challenge.</p>
+    </div>
+  </div>
+  <div class="how-img">
+    <img src="tear.jpg" alt="Peeling the DAY 1 band from MELT sachet bundle" />
+  </div>
+</section>
+
+
+
+<!-- WHY MELT -->
+<section class="why">
+  <p class="section-label">Why MELT</p>
+  <h2 class="section-title">Different in <em>every way.</em></h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">✦</div>
+      <h3>Indian Skin First</h3>
+      <p>Neem, Haldi, Chandan, Saffron — ingredients India has trusted for 1000 years, now in precise daily doses.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✦</div>
+      <h3>Zero Waste</h3>
+      <p>100% biodegradable kraft paper. Compostable. No plastic bottles ever. Every kit replaces 6 plastic bottles.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✦</div>
+      <h3>Dermatologist Inspired</h3>
+      <p>Exact pre-measured amounts every single day. No waste from half-empty bottles. Consistent results.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✦</div>
+      <h3>Travel Ready</h3>
+      <p>No liquids. No leaking. Fits in your college bag. Perfect for hostel life, travel, or overnight stays.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✦</div>
+      <h3>Always Fresh</h3>
+      <p>Each sachet is sealed individually. Zero oxidation unlike big bottles you open every day.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">✦</div>
+      <h3>Built for Consistency</h3>
+      <p>The hardest part of skincare is sticking to it. DAY 1 through DAY 15 makes it impossible to skip.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- TRAVEL -->
+<div class="travel">
+  <div class="travel-content">
+    <p class="section-label">Built for Your Life</p>
+    <h2 class="section-title">Fits in your<br><em>college bag.</em></h2>
+    <p style="font-size:15px;color:#666;line-height:1.7;margin-top:16px;max-width:380px;">Hostels. Travel. Early mornings. The entire box fits easily anywhere you go. No more leaking bottles in your bag.</p>
+    <a href="#preorder" class="btn-primary" style="margin-top:36px;">Reserve My Kit</a>
+  </div>
+  <div class="travel-img">
+    <img src="travel.jpg" alt="MELT 15 Days Challenge kit inside a college tote bag" />
+  </div>
+</div>
+
+<!-- SOCIAL PROOF - to be updated with real reviews -->
+
+
+
+
+
+<!-- AI SECTION -->
+<section class="ai-section">
+  <p class="section-label">✦ Powered by AI</p>
+  <h2 class="section-title">Not sure which kit is<br><em>right for your skin?</em></h2>
+  <p class="section-sub" style="margin:0 auto 0;color:#666;max-width:480px;">Answer 5 questions and get a personalised MELT recommendation in seconds. Free, instant, made for Indian skin.</p>
+  <div class="ai-chips">
+    <span class="ai-chip">AI Skin Quiz</span>
+    <span class="ai-chip">Ingredient Explainer</span>
+    <span class="ai-chip">AI Skin Advisor</span>
+  </div>
+  <a href="ai.html" class="btn-ai">Analyse My Skin — Free ✦</a>
+</section>
+
+<!-- STORY -->
+<div class="story">
+  <div class="story-img">
+    <img src="product.jpg" alt="MELT 15 Days Challenge box" />
+  </div>
+  <div class="story-content">
+    <p class="section-label">Our Story</p>
+    <blockquote>"MELT was built because Indian skin deserved better — not more products to guess at, but the right ones, in the right order, every single day."</blockquote>
+    <p class="story-author">— Karan, Founder · MELT</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq">
+  <p class="section-label">Questions</p>
+  <h2 class="section-title">We've got <em>answers.</em></h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <p class="faq-q">Is MELT safe for all skin types? <span>+</span></p>
+      <p class="faq-a">Yes. MELT is formulated for Indian skin types — oily, dry, combination, and sensitive. Use our free AI skin quiz for a personalised recommendation.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">When will my order ship? <span>+</span></p>
+      <p class="faq-a">We're taking pre-orders for our first batch of 500 units. Your kit ships within 6 weeks. We'll update you on WhatsApp every step of the way.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How do I use the DAY bundles? <span>+</span></p>
+      <p class="faq-a">Each morning, pull out that day's bundle and slide off the paper band. Use the 5 morning sachets in order. Before bed, use the 3 night sachets. Done.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What if I don't like it? <span>+</span></p>
+      <p class="faq-a">We stand behind our product completely. Message us on WhatsApp and we'll make it right — full replacement or refund. No catch, no forms.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Is the packaging actually biodegradable? <span>+</span></p>
+      <p class="faq-a">Yes. The outer kraft paper is 100% natural, recycled, and compostable. Every MELT kit replaces 6 plastic bottles from going to landfill.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How do I cancel my subscription? <span>+</span></p>
+      <p class="faq-a">Simply message us on WhatsApp. We cancel immediately — no questions, no forms, no waiting. We earn your subscription every month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PREORDER -->
+<div class="preorder" id="preorder">
+  <div class="preorder-left">
+    <p class="section-label">First Batch · 50 Units Only</p>
+    <h2 class="section-title" style="color:var(--white);">Start your<br><em style="color:var(--pink);">15 day journey.</em></h2>
+    <div class="preorder-features">
+      <div class="preorder-feature">
+        <span class="preorder-feature-icon">—</span>
+        <div><strong>No payment required upfront</strong><span>Confirm your spot first, pay on delivery</span></div>
+      </div>
+      <div class="preorder-feature">
+        <span class="preorder-feature-icon">—</span>
+        <div><strong>Confirmed on WhatsApp in 24 hours</strong><span>Direct from the founder</span></div>
+      </div>
+      <div class="preorder-feature">
+        <span class="preorder-feature-icon">—</span>
+        <div><strong>Free shipping included</strong><span>Pan India delivery</span></div>
+      </div>
+      <div class="preorder-feature">
+        <span class="preorder-feature-icon">—</span>
+        <div><strong>First batch exclusive</strong><span>50 units only</span></div>
+      </div>
+    </div>
+    <div class="spots-counter">
+      <div class="spots-num">43</div>
+      <div class="spots-text">
+        <strong>spots remaining</strong>
+        <span>out of 50 total in first batch</span>
+      </div>
+    </div>
+  </div>
+  <div class="preorder-right">
+    <p class="form-title">Reserve your spot</p>
+    <div class="form-group">
+      <label>Full Name *</label>
+      <input type="text" id="name" placeholder="Your name" />
+    </div>
+    <div class="form-group">
+      <label>WhatsApp Number *</label>
+      <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" />
+    </div>
+    <div class="form-group">
+      <label>Choose Your Kit *</label>
+      <select id="kit">
+        <option value="">Select a kit</option>
+        <option value="complete">🖤 Complete Kit — ₹1,299 (Recommended)</option>
+        <option value="morning">🌅 Morning Only — ₹799</option>
+        <option value="night">🌙 Night Only — ₹699</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Delivery Address *</label>
+      <input type="text" id="address" placeholder="Full address" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>City *</label>
+        <input type="text" id="city" placeholder="City" />
+      </div>
+      <div class="form-group">
+        <label>Pincode *</label>
+        <input type="text" id="pincode" placeholder="Pincode" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Skin Type (optional)</label>
+      <select id="skin">
+        <option value="">Select skin type</option>
+        <option>Oily</option>
+        <option>Dry</option>
+        <option>Combination</option>
+        <option>Sensitive</option>
+        <option>Normal</option>
+      </select>
+    </div>
+    <button class="btn-submit" onclick="submitForm()">Reserve My Spot on WhatsApp</button>
+    <p class="form-note">Your details are only used to confirm your order.</p>
+    <div class="success-msg" id="success-msg">
+      Opening WhatsApp now — your details are prefilled. Just tap Send.<br>
+      We'll confirm your spot within 24 hours.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">MELT</div>
+    <div class="footer-tagline">Skincare that melts into you</div>
+    <div class="footer-copy">© 2026 MELT · All rights reserved.</div>
+  </div>
+  <div style="text-align:right;">
+    <div style="margin-bottom:8px;"><a href="https://instagram.com/meltskinn">Follow the journey @meltskinn</a></div>
+    <div style="font-size:12px;color:#444;">India's first daily skincare sachet kit · Made for Indian skin</div>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  function showTab(tab, el) {
+    document.getElementById('morning-steps').style.display = tab === 'morning' ? 'block' : 'none';
+    document.getElementById('night-steps').style.display = tab === 'night' ? 'block' : 'none';
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Form submit
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const kit = document.getElementById('kit').value;
+    const address = document.getElementById('address').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const pincode = document.getElementById('pincode').value.trim();
+    const skin = document.getElementById('skin').value;
+
+    if (!name || !phone || !kit || !address || !city || !pincode) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const kitNames = {
+      complete: '🖤 Complete Kit — ₹1,299',
+      morning: '🌅 Morning Only — ₹799',
+      night: '🌙 Night Only — ₹699'
+    };
+
+    const msg = `Hi Karan! I'd like to pre-order MELT 🖤
+
+Name: ${name}
+Kit: ${kitNames[kit]}
+Address: ${address}, ${city} - ${pincode}
+Skin Type: ${skin || 'Not specified'}
+
+Please confirm my spot!`;
+
+    const url = `https://wa.me/918054956174?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
