@@ -1,619 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MELT &#8212; India's first 15-day skincare ritual. Complete morning + night routine in biodegradable sachets.">
-  <meta property="og:title" content="MELT &#8212; Your 15-day skin transformation">
-  <meta property="og:type" content="website">
-  <title>MELT &#8212; 15-Day Skincare Ritual</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MELT — 15-Day Skin Challenge</title>
+<meta name="description" content="India's first daily skincare challenge. 8 steps. 15 days. Zero bottles. Morning + Night routine in biodegradable kraft sachets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --kraft: #B89660;
+    --kraft-light: #D4B896;
+    --pink: #E8D5CC;
+    --white: #FDFCFA;
+    --gold: #C9A96E;
+    --text-muted: #7A7268;
+  }
 
-    :root {
-      --black:      #1a1a1a;
-      --charcoal:   #222222;
-      --cream:      #faf8f5;
-      --cream-dark: #f2ede6;
-      --pink:       #e8b4b8;
-      --pink-light: #f5e6e8;
-      --pink-deep:  #c9888e;
-      --gold:       #b8976a;
-      --white:      #ffffff;
-      --gray:       #888;
-      --font-display: 'Cormorant Garamond', serif;
-      --font-body:    'DM Sans', sans-serif;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 5%;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(180,150,96,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+
+  .nav-cta {
+    background: var(--charcoal);
+    color: var(--cream) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 5% 60px;
+    gap: 4rem;
+    background: var(--white);
+  }
+
+  .hero-text { max-width: 520px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cream);
+    border: 1px solid var(--kraft-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--kraft);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-badge span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.12;
+    font-weight: 700;
+    margin-bottom: 1.4rem;
+    color: var(--charcoal);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--kraft);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 2.2rem;
+    max-width: 420px;
+  }
+
+  .hero-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 2.4rem;
+  }
+
+  .pill {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid rgba(180,150,96,0.35);
+    border-radius: 20px;
+    color: var(--text-muted);
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+  .btn-primary {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 16px 32px;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { background: #1a1a1a; transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--charcoal);
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .btn-secondary:hover { gap: 10px; }
+
+  .hero-trust {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 580px;
+    border-radius: 4px;
+    box-shadow: 0 24px 64px rgba(44,44,44,0.12);
+  }
+
+  .hero-image-badge {
+    position: absolute;
+    bottom: 30px;
+    left: -20px;
+    background: var(--white);
+    border: 1px solid var(--kraft-light);
+    padding: 14px 20px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    font-size: 0.78rem;
+  }
+
+  .hero-image-badge strong {
+    display: block;
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--kraft);
+  }
+
+  /* STRIPS */
+  .strip {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 14px 5%;
+    display: flex;
+    gap: 3rem;
+    overflow: hidden;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .strip-inner {
+    display: flex;
+    gap: 4rem;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .strip-item { display: flex; align-items: center; gap: 10px; }
+  .strip-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+
+  /* PROBLEM */
+  .section {
+    padding: 90px 5%;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--kraft);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--kraft); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .problem-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .problem-card {
+    display: flex;
+    gap: 1.2rem;
+    padding: 20px 24px;
+    background: var(--cream);
+    border-radius: 4px;
+    border-left: 3px solid var(--kraft-light);
+    transition: border-color 0.2s;
+  }
+  .problem-card:hover { border-color: var(--kraft); }
+
+  .problem-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--kraft-light);
+    font-weight: 700;
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .problem-card h3 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .problem-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .problem-image img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 16px 48px rgba(44,44,44,0.1);
+  }
+
+  /* SACHETS SECTION */
+  .sachets-section {
+    background: var(--cream);
+    padding: 90px 5%;
+  }
+
+  .sachets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .sachets-image img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 20px 56px rgba(44,44,44,0.1);
+  }
+
+  .sachets-steps { display: flex; flex-direction: column; gap: 0; }
+
+  .step-group-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--kraft);
+    padding: 16px 0 8px;
+    border-top: 1px solid var(--kraft-light);
+    margin-top: 1.5rem;
+  }
+
+  .step-group-label:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(180,150,96,0.2);
+  }
+
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .step-info h4 { font-size: 0.88rem; font-weight: 500; }
+  .step-info span { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* HOW IT WORKS */
+  .how-section { padding: 90px 5%; }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .how-steps { display: flex; flex-direction: column; gap: 2rem; }
+
+  .how-step { display: flex; gap: 1.5rem; }
+
+  .how-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--kraft-light);
+    line-height: 1;
+    min-width: 50px;
+  }
+
+  .how-step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 6px; }
+  .how-step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+  .how-image img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 20px 56px rgba(44,44,44,0.1);
+  }
+
+  /* PRICING */
+  .pricing-section {
+    background: var(--charcoal);
+    padding: 90px 5%;
+    color: var(--cream);
+  }
+
+  .pricing-section .section-label { color: var(--gold); }
+  .pricing-section .section-title { color: var(--cream); }
+  .pricing-section .section-title em { color: var(--gold); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 780px;
+  }
+
+  .price-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .price-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+  .price-card.featured {
+    background: rgba(201,169,110,0.12);
+    border-color: var(--gold);
+    position: relative;
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .price-name {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kraft-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .price-sub {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 1.6rem;
+  }
+
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .price-features li {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.75);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .price-features li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .btn-buy {
+    display: block;
+    width: 100%;
+    background: var(--cream);
+    color: var(--charcoal);
+    padding: 14px;
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-buy:hover { background: var(--white); transform: translateY(-1px); }
+
+  .price-card.featured .btn-buy {
+    background: var(--gold);
+    color: var(--charcoal);
+  }
+
+  .price-card.featured .btn-buy:hover { background: #d4b87a; }
+
+  .pricing-trust {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.5);
+  }
+
+  /* WHY MELT */
+  .why-section { padding: 90px 5%; background: var(--cream); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .why-card {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 4px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .why-card:hover { border-color: var(--kraft); transform: translateY(-4px); }
+
+  .why-icon {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .why-card h3 {
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .why-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* FAQ */
+  .faq-section { padding: 90px 5%; }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    border: 1px solid rgba(180,150,96,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 20px;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.15s;
+  }
+
+  .faq-q:hover { background: var(--cream); }
+
+  .faq-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s;
+    color: var(--kraft);
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 20px 16px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    border-top: 1px solid rgba(180,150,96,0.15);
+    padding-top: 14px;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--charcoal);
+    padding: 90px 5%;
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .final-cta .section-title { color: var(--cream); }
+  .final-cta .section-title em { color: var(--gold); }
+
+  .final-cta p {
+    color: rgba(245,240,232,0.6);
+    font-size: 0.95rem;
+    margin: 1.2rem 0 2.5rem;
+  }
+
+  .final-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--charcoal);
+    padding: 16px 36px;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-gold:hover { background: #d4b87a; transform: translateY(-2px); }
+
+  .btn-outline-light {
+    background: transparent;
+    color: var(--cream);
+    padding: 16px 36px;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid rgba(245,240,232,0.3);
+    transition: border-color 0.2s;
+  }
+  .btn-outline-light:hover { border-color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: #1a1a1a;
+    padding: 40px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer .nav-logo { color: var(--cream); font-size: 1.2rem; }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.35);
+  }
+
+  footer a {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--gold); }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(44,44,44,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none; border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .modal-badge {
+    display: inline-block;
+    background: var(--cream);
+    border: 1px solid var(--kraft-light);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--kraft);
+    margin-bottom: 1rem;
+  }
+
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-product {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(180,150,96,0.2);
+  }
+
+  .modal-product strong { color: var(--kraft); }
+
+  .form-group { margin-bottom: 1rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(180,150,96,0.3);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    background: var(--white);
+    color: var(--charcoal);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--kraft); }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+  .modal-submit {
+    width: 100%;
+    background: var(--charcoal);
+    color: var(--cream);
+    border: none;
+    padding: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-top: 1.2rem;
+    transition: background 0.2s;
+  }
+
+  .modal-submit:hover { background: #1a1a1a; }
+  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .modal-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 5% 50px;
+      gap: 2.5rem;
     }
 
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--black);
-      font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    .hero-image-badge { display: none; }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(250,248,245,0.96);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(196,168,130,0.18);
-      padding: 0 40px; height: 62px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 24px;
-      font-weight: 600; letter-spacing: 5px;
-      text-decoration: none; color: var(--black);
-    }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a {
-      font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
-      text-decoration: none; color: var(--gray); transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--black); }
-    .nav-cta {
-      background: var(--black); color: var(--white);
-      padding: 9px 22px; border-radius: 2px;
-      text-decoration: none; font-size: 11px;
-      letter-spacing: 2px; text-transform: uppercase;
-      font-weight: 500; transition: background 0.2s;
-    }
-    .nav-cta:hover { background: #333; }
+    .problem-grid,
+    .sachets-grid,
+    .how-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 
-    /* ANNOUNCEMENT */
-    .announcement {
-      background: var(--black); color: var(--white);
-      text-align: center; padding: 11px 20px;
-      font-size: 11px; letter-spacing: 1.5px;
-      text-transform: uppercase; margin-top: 62px;
-    }
-    .announcement em { color: var(--pink); font-style: normal; }
+    .problem-image { order: -1; }
 
-    /* HERO */
-    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; }
-    .hero-left {
-      padding: 80px 64px 80px 80px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--pink-light);
-      border: 1px solid rgba(232,180,184,0.6);
-      padding: 7px 16px; border-radius: 20px;
-      font-size: 10px; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--pink-deep);
-      margin-bottom: 36px; width: fit-content;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(52px, 5.5vw, 84px);
-      font-weight: 300; line-height: 1.04; margin-bottom: 28px;
-    }
-    .hero-title em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 16px; color: #555; line-height: 1.75; max-width: 400px; margin-bottom: 44px; }
-    .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
-    .pill {
-      background: var(--white);
-      border: 1px solid rgba(196,168,130,0.35);
-      padding: 6px 14px; border-radius: 20px;
-      font-size: 11px; color: #666;
-    }
-    .hero-btns { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--black); color: var(--white);
-      padding: 16px 36px; border-radius: 2px;
-      text-decoration: none; font-size: 12px;
-      letter-spacing: 2px; text-transform: uppercase;
-      font-weight: 500; transition: all 0.2s;
-    }
-    .btn-primary:hover { background: #333; transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--black); text-decoration: none;
-      font-size: 12px; letter-spacing: 1px;
-      border-bottom: 1px solid var(--black);
-      padding-bottom: 2px; transition: opacity 0.2s;
-    }
-    .btn-secondary:hover { opacity: 0.55; }
-    .hero-right {
-      background: var(--pink-light);
-      position: relative; overflow: hidden;
-    }
-    .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-right::after {
-      content: ''; position: absolute; bottom: 0; right: 0;
-      width: 56px; height: 56px; background: var(--pink-light); pointer-events: none; z-index: 2;
-    }
-    .hero-tag {
-      position: absolute; bottom: 32px; left: 32px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(8px);
-      padding: 16px 22px; border-radius: 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    }
-    .hero-tag strong { display: block; font-family: var(--font-display); font-size: 20px; font-weight: 600; }
-    .hero-tag span { font-size: 11px; color: var(--gray); }
+    .pricing-grid { grid-template-columns: 1fr; }
 
-    /* SECTION */
-    section { padding: 100px 80px; }
-    .section-label { font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-    .section-title { font-family: var(--font-display); font-size: clamp(38px, 4vw, 58px); font-weight: 300; line-height: 1.1; margin-bottom: 20px; }
-    .section-title em { font-style: italic; color: var(--gold); }
-    .section-sub { font-size: 15px; color: #666; max-width: 520px; line-height: 1.75; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
 
-    /* PRICING */
-    .pricing { background: var(--black); color: var(--white); text-align: center; }
-    .pricing .section-title { color: var(--white); }
-    .pricing .section-label { color: var(--pink); }
-    .pricing-sub { color: #aaa; font-size: 14px; margin-bottom: 56px; max-width: 480px; margin-left: auto; margin-right: auto; margin-top: 8px; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .price-card { background: #1e1e1e; padding: 52px 40px; position: relative; text-align: left; }
-    .price-card.featured { background: var(--white); color: var(--black); }
-    .price-badge {
-      display: inline-block; background: var(--pink); color: var(--black);
-      padding: 4px 14px; font-size: 10px; letter-spacing: 1.5px;
-      text-transform: uppercase; font-weight: 500; margin-bottom: 24px; border-radius: 1px;
-    }
-    .price-icon { font-family: var(--font-display); font-size: 32px; color: var(--gold); margin-bottom: 20px; display: block; }
-    .price-name { font-family: var(--font-display); font-size: 26px; font-weight: 400; margin-bottom: 8px; }
-    .price-amount { font-family: var(--font-display); font-size: 52px; font-weight: 300; line-height: 1; margin-bottom: 6px; }
-    .price-amount sup { font-size: 24px; vertical-align: super; }
-    .price-period { font-size: 12px; color: var(--gray); margin-bottom: 32px; }
-    .price-card.featured .price-period { color: #888; }
-    .price-features { list-style: none; margin-bottom: 36px; }
-    .price-features li {
-      font-size: 13px; padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      color: #bbb;
-    }
-    .price-card.featured .price-features li { color: #444; border-bottom-color: rgba(0,0,0,0.07); }
-    .price-cta {
-      display: block; text-align: center; padding: 13px; border-radius: 2px;
-      text-decoration: none; font-size: 11px; letter-spacing: 2px;
-      text-transform: uppercase; font-weight: 500; transition: all 0.2s;
-      background: rgba(255,255,255,0.08); color: var(--white);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    .price-cta:hover { background: rgba(255,255,255,0.15); }
-    .price-card.featured .price-cta { background: var(--black); color: var(--white); border-color: var(--black); }
-    .price-card.featured .price-cta:hover { background: #333; }
-    .token-note {
-      margin-top: 48px;
-      background: rgba(232,180,184,0.1);
-      border: 1px solid rgba(232,180,184,0.22);
-      border-radius: 4px; padding: 20px 28px;
-      display: flex; align-items: flex-start; gap: 16px;
-      text-align: left; max-width: 680px; margin-left: auto; margin-right: auto;
-    }
-    .token-note p { font-size: 13px; color: #bbb; line-height: 1.65; }
-    .token-note strong { color: var(--pink); }
+    .faq-grid { grid-template-columns: 1fr; }
 
-    /* PROBLEM */
-    .problem { background: var(--charcoal); color: var(--white); }
-    .problem .section-title { color: var(--white); }
-    .problem .section-label { color: var(--pink); }
-    .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
-    .problem-card { background: #2a2a2a; padding: 48px 40px; }
-    .problem-icon { font-family: var(--font-display); font-size: 28px; font-weight: 300; font-style: italic; color: var(--pink); margin-bottom: 20px; letter-spacing: 2px; }
-    .problem-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 14px; color: var(--white); }
-    .problem-card p { color: #999; font-size: 14px; line-height: 1.75; }
+    .final-buttons { flex-direction: column; align-items: center; }
 
-    /* COMPARISON */
-    .comparison { padding: 0; position: relative; overflow: hidden; }
-    .comparison img { width: 100%; display: block; }
-    .comparison::after { content: ''; position: absolute; bottom: 0; right: 0; width: 56px; height: 56px; background: #d8d0c5; pointer-events: none; }
+    footer { flex-direction: column; text-align: center; gap: 1.5rem; }
 
-    /* PRODUCT */
-    .product { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
-    .product-img { overflow: hidden; position: relative; }
-    .product-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .product-img::after { content: ''; position: absolute; bottom: 0; right: 0; width: 56px; height: 56px; background: #e8e0d5; pointer-events: none; }
-    .product-content { padding: 80px 72px; display: flex; flex-direction: column; justify-content: center; }
-    .routine-tabs {
-      display: flex; gap: 0; margin: 36px 0 28px;
-      border: 1px solid rgba(196,168,130,0.35);
-      border-radius: 2px; overflow: hidden; width: fit-content;
-    }
-    .tab { padding: 10px 26px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; background: transparent; border: none; font-family: var(--font-body); color: #999; }
-    .tab.active { background: var(--black); color: var(--white); }
-    .steps-list { list-style: none; }
-    .step-item { display: flex; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
-    .step-num { width: 28px; height: 28px; background: var(--pink-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; color: var(--pink-deep); flex-shrink: 0; margin-top: 3px; }
-    .step-info strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
-    .step-info span { font-size: 12px; color: var(--gray); }
+    .form-row { grid-template-columns: 1fr; }
 
-    /* HOW */
-    .how { background: var(--cream); }
-    .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 56px 0; }
-    .how-card { background: var(--white); padding: 48px 40px; }
-    .how-num { font-family: var(--font-display); font-size: 72px; font-weight: 300; color: rgba(196,168,130,0.18); line-height: 1; margin-bottom: 20px; }
-    .how-card h3 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
-    .how-card p { font-size: 14px; color: #666; line-height: 1.75; }
-    .how-img { overflow: hidden; position: relative; }
-    .how-img img { width: 100%; display: block; }
-    .how-img::after { content: ''; position: absolute; bottom: 0; right: 0; width: 56px; height: 56px; background: #f0ebe3; pointer-events: none; }
+    .modal { padding: 28px 20px; }
+  }
 
-    /* WHY */
-    .why { background: var(--white); }
-    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 56px; }
-    .why-card { padding: 36px 32px; border: 1px solid rgba(196,168,130,0.2); border-radius: 4px; transition: border-color 0.2s, transform 0.2s; }
-    .why-card:hover { border-color: var(--pink); transform: translateY(-4px); }
-    .why-icon { font-size: 16px; margin-bottom: 20px; color: var(--gold); }
-    .why-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 10px; }
-    .why-card p { font-size: 13px; color: #666; line-height: 1.75; }
-
-    /* AI */
-    .ai-section { background: var(--black); color: var(--white); text-align: center; padding: 80px; }
-    .ai-section .section-label { color: var(--pink); }
-    .ai-chips { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 32px 0; }
-    .ai-chip { border: 1px solid rgba(255,255,255,0.2); padding: 8px 18px; border-radius: 20px; font-size: 12px; color: #ccc; }
-    .btn-ai { display: inline-block; background: var(--pink); color: var(--black); padding: 15px 40px; border-radius: 2px; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: all 0.2s; }
-    .btn-ai:hover { background: var(--pink-deep); color: var(--white); transform: translateY(-1px); }
-
-    /* STORY */
-    .story { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
-    .story-img { overflow: hidden; position: relative; }
-    .story-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .story-img::after { content: ''; position: absolute; bottom: 0; right: 0; width: 56px; height: 56px; background: #e0d8d0; pointer-events: none; }
-    .story-content { padding: 80px 72px; background: var(--cream-dark); display: flex; flex-direction: column; justify-content: center; }
-    blockquote { font-family: var(--font-display); font-size: clamp(22px, 2.5vw, 30px); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--black); margin-bottom: 24px; }
-    .story-author { font-size: 12px; color: var(--gray); letter-spacing: 1px; }
-
-    /* FAQ */
-    .faq { background: var(--cream); }
-    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 56px; }
-    .faq-item { padding: 28px 32px; border-bottom: 1px solid rgba(196,168,130,0.2); border-right: 1px solid rgba(196,168,130,0.2); cursor: pointer; }
-    .faq-item:nth-child(2n) { border-right: none; }
-    .faq-q { font-size: 15px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
-    .faq-q span { color: var(--gold); font-size: 20px; font-weight: 300; transition: transform 0.2s; }
-    .faq-a { font-size: 13px; color: #666; line-height: 1.7; display: none; margin-top: 12px; }
-    .faq-item.open .faq-q span { transform: rotate(45deg); }
-    .faq-item.open .faq-a { display: block; }
-
-    /* PREORDER */
-    .preorder { display: grid; grid-template-columns: 1fr 1fr; background: var(--black); color: var(--white); padding: 0; }
-    .preorder-left { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
-    .preorder-left .section-title { color: var(--white); }
-    .preorder-features { margin: 36px 0; display: flex; flex-direction: column; gap: 20px; }
-    .preorder-feature { display: flex; align-items: flex-start; gap: 16px; }
-    .preorder-feature-icon { color: var(--gold); margin-top: 2px; flex-shrink: 0; }
-    .preorder-feature strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
-    .preorder-feature span { font-size: 12px; color: #888; }
-    .spots-counter { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 20px 24px; border-radius: 4px; }
-    .spots-num { font-family: var(--font-display); font-size: 52px; font-weight: 300; color: var(--pink); line-height: 1; }
-    .spots-text strong { display: block; font-size: 14px; font-weight: 500; }
-    .spots-text span { font-size: 12px; color: #888; }
-    .preorder-right { padding: 72px 64px; background: #141414; display: flex; flex-direction: column; justify-content: center; }
-    .form-title { font-family: var(--font-display); font-size: 26px; font-weight: 400; color: var(--white); margin-bottom: 28px; }
-    .token-box { background: rgba(232,180,184,0.1); border: 1px solid rgba(232,180,184,0.3); border-radius: 2px; padding: 16px 18px; margin-bottom: 20px; font-size: 13px; color: #ccc; line-height: 1.6; }
-    .token-box strong { color: var(--pink); display: block; font-size: 15px; margin-bottom: 4px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 8px; }
-    .form-group input, .form-group select { width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; color: var(--white); font-size: 14px; font-family: var(--font-body); outline: none; transition: border-color 0.2s; appearance: none; }
-    .form-group select option { background: #222; }
-    .form-group input:focus, .form-group select:focus { border-color: var(--pink); }
-    .form-group input::placeholder { color: #555; }
-    .form-row { display: flex; gap: 14px; }
-    .form-row .form-group { flex: 1; }
-    .btn-submit { width: 100%; background: var(--white); color: var(--black); border: none; padding: 16px; border-radius: 2px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
-    .btn-submit:hover { background: var(--pink-light); }
-    .form-note { font-size: 11px; color: #555; text-align: center; margin-top: 12px; }
-    .success-msg { display: none; background: rgba(232,180,184,0.12); border: 1px solid rgba(232,180,184,0.3); border-radius: 2px; padding: 16px; font-size: 13px; color: var(--pink-light); text-align: center; margin-top: 14px; line-height: 1.6; }
-
-    /* FOOTER */
-    footer { background: #111; color: #555; padding: 48px 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .footer-logo { font-family: var(--font-display); font-size: 28px; font-weight: 600; letter-spacing: 5px; color: var(--white); }
-    .footer-tagline { font-size: 12px; color: #444; margin-top: 4px; }
-    footer a { color: var(--pink); text-decoration: none; font-size: 13px; }
-    footer a:hover { color: var(--white); }
-    .footer-copy { font-size: 11px; color: #444; margin-top: 8px; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      section { padding: 60px 24px; }
-      nav { padding: 0 20px; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .hero, .product, .story, .preorder { grid-template-columns: 1fr; }
-      .hero-left { padding: 56px 24px; }
-      .hero-right { height: 72vw; }
-      .hero-tag { display: none; }
-      .problem-grid, .how-grid, .why-grid { grid-template-columns: 1fr; gap: 2px; }
-      .product-img, .story-img { height: 60vw; }
-      .product-content, .story-content { padding: 48px 24px; }
-      .preorder-left, .preorder-right { padding: 48px 24px; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .faq-item { border-right: none; }
-      .ai-section { padding: 60px 24px; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .form-row { flex-direction: column; }
-      footer { flex-direction: column; padding: 40px 24px; text-align: center; }
-    }
-  </style>
+  @media (max-width: 480px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.1rem; }
+  }
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">MELT</a>
-  <div class="nav-links">
-    <a href="#how">How it works</a>
-    <a href="#why">Why MELT</a>
-    <a href="#preorder" class="nav-cta">Order Now</a>
-  </div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#why">Why MELT</a></li>
+    <li><a href="#pricing" class="nav-cta">Order Now</a></li>
+  </ul>
 </nav>
 
-<!-- ANNOUNCEMENT -->
-<div class="announcement">
-  First batch &middot; <em>50 units only</em> &middot; Free shipping &middot; Secure payment via Razorpay
-</div>
-
 <!-- HERO -->
-<section class="hero" style="padding:0;">
-  <div class="hero-left">
-    <div class="hero-badge">&#10022; India&#8217;s First &middot; 15 Days Skin Challenge</div>
-    <h1 class="hero-title">Skin that<br><em>transforms.</em><br>In 15 days.</h1>
-    <p class="hero-sub">Your complete morning + night routine in one box. 8 steps. Zero bottles. Made with Neem, Haldi &amp; Chandan.</p>
-    <div class="hero-pills">
-      <span class="pill">Biodegradable packaging</span>
-      <span class="pill">8 Indian ingredients</span>
-      <span class="pill">Secure Razorpay payment</span>
-    </div>
-    <div class="hero-btns">
-      <a href="https://rzp.io/rzp/Gl18AAAs" target="_blank" class="btn-primary">Order Now — &#8377;1,299</a>
-      <a href="#how" class="btn-secondary">See how it works &rarr;</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <img src="product.jpg" alt="MELT 15 Days Challenge box">
-    <div class="hero-tag">
-      <strong>15 Days Challenge</strong>
-      <span>Morning 5 Steps &middot; Night 3 Steps</span>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <p class="section-label">Simple Pricing</p>
-  <h2 class="section-title">One price. <em style="color:var(--pink);">Everything included.</em></h2>
-  <p class="pricing-sub">Full payment. Instant confirmation. Free shipping pan India.</p>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <span class="price-icon">&#9675;</span>
-      <p class="price-name">Morning Only</p>
-      <p class="price-amount"><sup>&#8377;</sup>799</p>
-      <p class="price-period">15-day kit &middot; Free shipping</p>
-      <ul class="price-features">
-        <li>15 Morning Sachets (Day 1&#8211;15)</li>
-        <li>Cleanser &middot; Toner &middot; Serum</li>
-        <li>Moisturiser &middot; SPF 50</li>
-      </ul>
-      <a href="https://rzp.io/rzp/OCbsEki" target="_blank" class="price-cta">Buy Now &#8212; &#8377;799</a>
-    </div>
-    <div class="price-card featured">
-      <div class="price-badge">Most Popular</div>
-      <span class="price-icon">&#10022;</span>
-      <p class="price-name">Complete Kit</p>
-      <p class="price-amount"><sup>&#8377;</sup>1,299</p>
-      <p class="price-period">15-day kit &middot; Save &#8377;200</p>
-      <ul class="price-features">
-        <li>15 Morning + Night Sachets</li>
-        <li>All 8 steps covered daily</li>
-        <li>Neem, Haldi, Chandan, Saffron</li>
-      </ul>
-      <a href="https://rzp.io/rzp/Gl18AAAs" target="_blank" class="price-cta">Buy Now &#8212; &#8377;1,299</a>
-    </div>
-    <div class="price-card">
-      <span class="price-icon">&#9685;</span>
-      <p class="price-name">Night Only</p>
-      <p class="price-amount"><sup>&#8377;</sup>699</p>
-      <p class="price-period">15-day kit &middot; Free shipping</p>
-      <ul class="price-features">
-        <li>15 Night Sachets (Day 1&#8211;15)</li>
-        <li>Oil Cleanser &middot; Night Serum</li>
-        <li>Night Cream with Saffron</li>
-      </ul>
-      <a href="https://rzp.io/rzp/gTYhn4Jt" target="_blank" class="price-cta">Buy Now &#8212; &#8377;699</a>
-    </div>
-  </div>
-
-</section>
-
-<!-- PROBLEM -->
-<section class="problem">
-  <p class="section-label">The Problem</p>
-  <h2 class="section-title">Your shelf is <em>out of control.</em></h2>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div class="problem-icon">I</div>
-      <h3>Too Many Products</h3>
-      <p>6 different bottles. Different brands, different prices. Complete confusion every morning before college or work.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">II</div>
-      <h3>Too Much Time</h3>
-      <p>20 minutes every morning just for skincare. Figuring out what goes first, what to skip, what&#8217;s finished.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">III</div>
-      <h3>Too Expensive</h3>
-      <p>&#8377;3,000+ per month on multiple products. Most of it wasted in bottles you&#8217;ll never fully finish.</p>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<div class="comparison">
-  <img src="comparison.jpg" alt="Before MELT vs After MELT">
-</div>
-
-<!-- PRODUCT -->
-<div class="product" id="product">
-  <div class="product-img">
-    <img src="sachets.jpg" alt="All 8 MELT sachets">
-  </div>
-  <div class="product-content">
-    <p class="section-label">The Solution</p>
-    <h2 class="section-title">One box.<br>15 days. <em>Done.</em></h2>
-    <p class="section-sub" style="margin-bottom:0;">India&#8217;s first complete daily skincare challenge in biodegradable kraft sachets. Made with ingredients India has trusted for centuries.</p>
-    <div class="routine-tabs">
-      <button class="tab active" onclick="showTab('morning',this)">&#127749; Morning</button>
-      <button class="tab" onclick="showTab('night',this)">&#127769; Night</button>
-    </div>
-    <ul class="steps-list" id="morning-steps">
-      <li class="step-item"><div class="step-num">1</div><div class="step-info"><strong>Cleanser</strong><span>Neem + Salicylic Acid &middot; 10ml</span></div></li>
-      <li class="step-item"><div class="step-num">2</div><div class="step-info"><strong>Toner</strong><span>Rose Water + Glycerin &middot; 5ml</span></div></li>
-      <li class="step-item"><div class="step-num">3</div><div class="step-info"><strong>Serum</strong><span>Vitamin C + Haldi &middot; 5ml</span></div></li>
-      <li class="step-item"><div class="step-num">4</div><div class="step-info"><strong>Moisturiser</strong><span>Aloe Vera + Hyaluronic Acid &middot; 5ml</span></div></li>
-      <li class="step-item"><div class="step-num">5</div><div class="step-info"><strong>SPF 50 PA++++</strong><span>Broad Spectrum &middot; 15ml</span></div></li>
-    </ul>
-    <ul class="steps-list" id="night-steps" style="display:none;">
-      <li class="step-item"><div class="step-num">1</div><div class="step-info"><strong>Oil Cleanser</strong><span>Micellar + Chandan &middot; 10ml</span></div></li>
-      <li class="step-item"><div class="step-num">2</div><div class="step-info"><strong>Night Serum</strong><span>Niacinamide + Bakuchiol &middot; 5ml</span></div></li>
-      <li class="step-item"><div class="step-num">3</div><div class="step-info"><strong>Night Cream</strong><span>Saffron + Shea Butter &middot; 8ml</span></div></li>
-    </ul>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <p class="section-label">How It Works</p>
-  <h2 class="section-title">Three steps. <em>Every day.</em></h2>
-  <div class="how-grid">
-    <div class="how-card"><div class="how-num">01</div><h3>Peel the Band</h3><p>Each day, pull out your DAY bundle. Slide off the kraft band to reveal your sachets &#8212; morning and night, all sorted.</p></div>
-    <div class="how-card"><div class="how-num">02</div><h3>Tear &amp; Apply</h3><p>Tear each sachet in order. Your exact daily dose &#8212; no measuring, no waste, no guessing. The sequence is done for you.</p></div>
-    <div class="how-card"><div class="how-num">03</div><h3>See the Glow</h3><p>A dermatologist-inspired routine in under 2 minutes. By Day 15, your skin tells the story. That&#8217;s the challenge.</p></div>
-  </div>
-  <div class="how-img">
-    <img src="tear.jpg" alt="Peeling the DAY 1 band from MELT sachet bundle">
-  </div>
-</section>
-
-<!-- WHY MELT -->
-<section class="why" id="why">
-  <p class="section-label">Why MELT</p>
-  <h2 class="section-title">Different in <em>every way.</em></h2>
-  <div class="why-grid">
-    <div class="why-card"><div class="why-icon">&#10022;</div><h3>Indian Skin First</h3><p>Neem, Haldi, Chandan, Saffron &#8212; ingredients India has trusted for 1000 years, now in precise daily doses.</p></div>
-    <div class="why-card"><div class="why-icon">&#10022;</div><h3>Zero Waste</h3><p>100% biodegradable kraft paper. No plastic bottles ever. Every kit replaces 6 plastic bottles.</p></div>
-    <div class="why-card"><div class="why-icon">&#10022;</div><h3>Dermatologist Inspired</h3><p>Exact pre-measured amounts every single day. No waste from half-empty bottles. Consistent results.</p></div>
-    <div class="why-card"><div class="why-icon">&#10022;</div><h3>Travel Ready</h3><p>No liquids. No leaking. Fits in your college bag. Perfect for hostel life, travel, or overnight stays.</p></div>
-    <div class="why-card"><div class="why-icon">&#10022;</div><h3>Always Fresh</h3><p>Each sachet is sealed individually. Zero oxidation unlike big bottles you open every day.</p></div>
-    <div class="why-card"><div class="why-icon">&#10022;</div><h3>Built for Consistency</h3><p>DAY 1 through DAY 15 makes it impossible to skip. The hardest part of skincare is solved.</p></div>
-  </div>
-</section>
-
-<!-- AI SECTION -->
-<section class="ai-section">
-  <p class="section-label">&#10022; Powered by AI</p>
-  <h2 class="section-title" style="color:var(--white);">Not sure which kit is<br><em>right for your skin?</em></h2>
-  <p class="section-sub" style="margin:0 auto;color:#aaa;max-width:480px;">Answer 5 questions and get a personalised MELT recommendation in seconds. Free, instant, made for Indian skin.</p>
-  <div class="ai-chips">
-    <span class="ai-chip">AI Skin Quiz</span>
-    <span class="ai-chip">Ingredient Explainer</span>
-    <span class="ai-chip">AI Skin Advisor</span>
-  </div>
-  <a href="ai.html" class="btn-ai">Analyse My Skin &#8212; Free &#10022;</a>
-</section>
-
-<!-- STORY -->
-<div class="story">
-  <div class="story-img">
-    <img src="product.jpg" alt="MELT 15 Days Challenge box">
-  </div>
-  <div class="story-content">
-    <p class="section-label">Our Story</p>
-    <blockquote>&#8220;MELT was built because Indian skin deserved better &#8212; not more products to guess at, but the right ones, in the right order, every single day.&#8221;</blockquote>
-    <p class="story-author">&#8212; Karan, Founder &middot; MELT</p>
-  </div>
-</div>
-
-<!-- FAQ -->
-<section class="faq">
-  <p class="section-label">Questions</p>
-  <h2 class="section-title">We&#8217;ve got <em>answers.</em></h2>
-  <div class="faq-grid">
-    <div class="faq-item"><p class="faq-q">Is MELT safe for all skin types? <span>+</span></p><p class="faq-a">Yes. MELT is formulated for Indian skin types &#8212; oily, dry, combination, and sensitive. Use our free AI skin quiz for a personalised recommendation.</p></div>
-    <div class="faq-item"><p class="faq-q">When will my order ship? <span>+</span></p><p class="faq-a">We&#8217;re taking pre-orders for our first batch of 50 units. Your kit ships within 6 weeks. We&#8217;ll update you on WhatsApp every step of the way.</p></div>
-    <div class="faq-item"><p class="faq-q">How do I place an order? <span>+</span></p><p class="faq-a">Click any Buy Now button and complete payment via Razorpay &#8212; UPI, cards, and net banking all work. You&#8217;ll get instant confirmation. We ship within 6 weeks and update you on WhatsApp every step.</p></div>
-    <div class="faq-item"><p class="faq-q">What if I don&#8217;t like it? <span>+</span></p><p class="faq-a">Message us on WhatsApp. Full replacement or refund &#8212; no catch, no forms. We earn your trust every day.</p></div>
-    <div class="faq-item"><p class="faq-q">Is the packaging actually biodegradable? <span>+</span></p><p class="faq-a">Yes. The outer kraft paper is 100% natural, recycled, and compostable. Every MELT kit replaces 6 plastic bottles from going to landfill.</p></div>
-    <div class="faq-item"><p class="faq-q">How do I use the DAY bundles? <span>+</span></p><p class="faq-a">Each morning, pull out that day&#8217;s bundle and slide off the paper band. Use the 5 morning sachets in order. Before bed, use the 3 night sachets. Done.</p></div>
-  </div>
-</section>
-
-<!-- ORDER SECTION -->
-<div class="preorder" id="preorder" style="display:block; background:var(--black); color:var(--white); padding:80px;">
-  <div style="text-align:center; max-width:900px; margin:0 auto;">
-    <p class="section-label" style="color:var(--pink);">Order Now</p>
-    <h2 class="section-title" style="color:var(--white);">Start your <em style="color:var(--pink);">15 day journey.</em></h2>
-    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:24px 0 48px;">
-      <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); padding:8px 20px; border-radius:20px; font-size:12px; color:#ccc;">&#10022; Instant confirmation</span>
-      <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); padding:8px 20px; border-radius:20px; font-size:12px; color:#ccc;">&#10022; Free shipping pan India</span>
-      <span style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); padding:8px 20px; border-radius:20px; font-size:12px; color:#ccc;">&#10022; First batch — 50 units only</span>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:2px; margin-bottom:32px;">
-
-      <div style="background:#1e1e1e; padding:48px 36px; text-align:left;">
-        <p style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:16px;">Morning Only</p>
-        <p style="font-family:var(--font-display); font-size:48px; font-weight:300; line-height:1; margin-bottom:8px;"><sup style="font-size:22px; vertical-align:super;">&#8377;</sup>799</p>
-        <p style="font-size:12px; color:#666; margin-bottom:24px;">15 Morning Sachets &middot; 5 Steps Daily<br>Cleanser &middot; Toner &middot; Serum &middot; Moisturiser &middot; SPF</p>
-        <a href="https://rzp.io/rzp/OCbsEki" target="_blank" style="display:block; text-align:center; padding:13px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:var(--white); text-decoration:none; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:all 0.2s;">Buy Now &#8212; &#8377;799</a>
-      </div>
-
-      <div style="background:var(--white); padding:48px 36px; text-align:left; position:relative;">
-        <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--pink); color:var(--black); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500; padding:5px 16px;">Most Popular</div>
-        <p style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:16px; margin-top:8px;">Complete Kit</p>
-        <p style="font-family:var(--font-display); font-size:48px; font-weight:300; line-height:1; margin-bottom:8px; color:var(--black);"><sup style="font-size:22px; vertical-align:super;">&#8377;</sup>1,299</p>
-        <p style="font-size:12px; color:#666; margin-bottom:24px;">Morning + Night &middot; All 8 Steps<br>Save &#8377;200 vs buying separately</p>
-        <a href="https://rzp.io/rzp/Gl18AAAs" target="_blank" style="display:block; text-align:center; padding:13px; background:var(--black); color:var(--white); text-decoration:none; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:all 0.2s;">Buy Now &#8212; &#8377;1,299</a>
-      </div>
-
-      <div style="background:#1e1e1e; padding:48px 36px; text-align:left;">
-        <p style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:16px;">Night Only</p>
-        <p style="font-family:var(--font-display); font-size:48px; font-weight:300; line-height:1; margin-bottom:8px;"><sup style="font-size:22px; vertical-align:super;">&#8377;</sup>699</p>
-        <p style="font-size:12px; color:#666; margin-bottom:24px;">15 Night Sachets &middot; 3 Steps Daily<br>Oil Cleanser &middot; Night Serum &middot; Night Cream</p>
-        <a href="https://rzp.io/rzp/gTYhn4Jt" target="_blank" style="display:block; text-align:center; padding:13px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:var(--white); text-decoration:none; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500; transition:all 0.2s;">Buy Now &#8212; &#8377;699</a>
-      </div>
-
-    </div>
-    <p style="font-size:11px; color:#444; letter-spacing:0.5px;">Secure payment via Razorpay &middot; UPI &middot; Cards &middot; Net Banking &middot; All accepted</p>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="footer-logo">MELT</div>
-    <div class="footer-tagline">Skincare that melts into you</div>
-    <div class="footer-copy">&copy; 2026 MELT &middot; All rights reserved.</div>
-  </div>
-  <div style="text-align:right;">
-    <div style="margin-bottom:8px;"><a href="https://instagram.com/meltskinn">Follow the journey @meltskinn</a></div>
-    <div style="font-size:12px;color:#444;">India&#8217;s first daily skincare sachet kit &middot; Made for Indian skin</div>
-  </div>
-</footer>
-
-<script>
-  function showTab(tab, el) {
-    document.getElementById('morning-steps').style.display = tab === 'morning' ? 'block' : 'none';
-    document.getElementById('night-steps').style.display = tab === 'night' ? 'block' : 'none';
-    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-    el.classList.add('active');
-  }
-
-  document.querySelectorAll('.faq-item').forEach(function(item) {
-    item.addEventListener('click', function() { item.classList.toggle('open'); });
-  });
-</script>
-
-</body>
-</html>
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge"><span></span> First Batch — 50 Units Only</div>
+  
