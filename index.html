@@ -1306,12 +1306,23 @@
     document.getElementById('modalProductName').textContent = products[product].name;
     document.getElementById('orderModal').classList.add('active');
     document.body.style.overflow = 'hidden';
+    // Push hash so back button closes modal, not the page
+    history.pushState({ modal: true }, '', '#order');
   }
 
   function closeModal() {
     document.getElementById('orderModal').classList.remove('active');
     document.body.style.overflow = '';
+    if (location.hash === '#order') history.back();
   }
+
+  // Back button closes modal
+  window.addEventListener('popstate', function(e) {
+    if (document.getElementById('orderModal').classList.contains('active')) {
+      document.getElementById('orderModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
 
   document.getElementById('orderModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
