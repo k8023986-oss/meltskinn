@@ -70,76 +70,193 @@
     letter-spacing: 0.12em !important;
   }
 
-  /* HERO */
+  /* HERO — above fold: image left, pricing right */
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 120px 5% 60px;
-    gap: 4rem;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: stretch;
+    padding-top: 68px;
     background: var(--white);
   }
 
-  .hero-text { max-width: 520px; }
+  .hero-left {
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  .hero-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .hero-left-overlay {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    right: 28px;
+  }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--cream);
+    background: rgba(253,252,250,0.92);
     border: 1px solid var(--kraft-light);
     padding: 6px 14px;
     border-radius: 20px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--kraft);
-    margin-bottom: 1.8rem;
+    backdrop-filter: blur(8px);
   }
 
   .hero-badge span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
 
-  .hero h1 {
+  /* RIGHT PANEL */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 5% 48px 4%;
+    overflow-y: auto;
+  }
+
+  .hero-right h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-    line-height: 1.12;
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    line-height: 1.15;
     font-weight: 700;
-    margin-bottom: 1.4rem;
+    margin-bottom: 0.8rem;
     color: var(--charcoal);
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--kraft);
-  }
+  .hero-right h1 em { font-style: italic; color: var(--kraft); }
 
   .hero-sub {
-    font-size: 1rem;
+    font-size: 0.88rem;
     line-height: 1.7;
     color: var(--text-muted);
-    margin-bottom: 2.2rem;
-    max-width: 420px;
+    margin-bottom: 1.6rem;
   }
 
   .hero-pills {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.8rem;
   }
 
   .pill {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border: 1px solid rgba(180,150,96,0.35);
     border-radius: 20px;
     color: var(--text-muted);
   }
 
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  /* INLINE PRICING CARDS in hero */
+  .hero-pricing { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem; }
+
+  .hero-price-card {
+    border: 1px solid rgba(180,150,96,0.25);
+    border-radius: 4px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+
+  .hero-price-card:hover { border-color: var(--kraft); background: var(--cream); }
+
+  .hero-price-card.featured-card {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.06);
+    position: relative;
+  }
+
+  .hero-card-tag {
+    position: absolute;
+    top: -10px; right: 14px;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  .hero-card-info h4 {
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  .hero-card-info p {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+  }
+
+  .hero-card-right { text-align: right; flex-shrink: 0; }
+
+  .hero-card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    display: block;
+  }
+
+  .hero-card-btn {
+    display: inline-block;
+    margin-top: 6px;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 8px 16px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .hero-card-btn:hover { background: #1a1a1a; }
+  .featured-card .hero-card-btn { background: var(--gold); color: var(--charcoal); }
+  .featured-card .hero-card-btn:hover { background: #d4b87a; }
+
+  .hero-trust {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+
+  .btn-secondary {
+    color: var(--charcoal);
+    font-size: 0.82rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+    margin-top: 1rem;
+  }
+  .btn-secondary:hover { gap: 10px; }
 
   .btn-primary {
     background: var(--charcoal);
@@ -157,57 +274,8 @@
   }
   .btn-primary:hover { background: #1a1a1a; transform: translateY(-1px); }
 
-  .btn-secondary {
-    color: var(--charcoal);
-    font-size: 0.85rem;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s;
-  }
-  .btn-secondary:hover { gap: 10px; }
-
-  .hero-trust {
-    margin-top: 2rem;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-  }
-
-  .hero-image {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-image img {
-    width: 100%;
-    max-width: 580px;
-    border-radius: 4px;
-    box-shadow: 0 24px 64px rgba(44,44,44,0.12);
-  }
-
-  .hero-image-badge {
-    position: absolute;
-    bottom: 30px;
-    left: -20px;
-    background: var(--white);
-    border: 1px solid var(--kraft-light);
-    padding: 14px 20px;
-    border-radius: 4px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    font-size: 0.78rem;
-  }
-
-  .hero-image-badge strong {
-    display: block;
-    font-size: 1.1rem;
-    font-family: 'Playfair Display', serif;
-    color: var(--kraft);
-  }
+  .hero-image { display: none; }
+  .hero-image-badge { display: none; }
 
   /* STRIPS */
   .strip {
@@ -845,17 +913,18 @@
     line-height: 1.5;
   }
 
-  /* MOBILE */
   @media (max-width: 768px) {
     .nav-links { display: none; }
 
     .hero {
       grid-template-columns: 1fr;
-      padding: 100px 5% 50px;
-      gap: 2.5rem;
+      grid-template-rows: 50vh auto;
+      padding-top: 62px;
     }
 
-    .hero-image-badge { display: none; }
+    .hero-left { min-height: 50vh; }
+    .hero-right { padding: 28px 5% 40px; }
+    .hero-right h1 { font-size: 1.9rem; }
 
     .problem-grid,
     .sachets-grid,
@@ -880,7 +949,7 @@
 
   @media (max-width: 480px) {
     .why-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.1rem; }
+    .hero-card-price { font-size: 1.3rem; }
   }
 </style>
 </head>
@@ -896,8 +965,416 @@
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — product image + pricing above fold -->
 <section class="hero">
-  <div class="hero-text">
-    <div class="hero-badge"><span></span> First Batch — 50 Units Only</div>
-  
+  <div class="hero-left">
+    <img src="product.jpg" alt="MELT 15-Day Skin Challenge Kit">
+    <div class="hero-left-overlay">
+      <div class="hero-badge"><span></span> First Batch — 50 Units Only</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <h1>Skin that <em>transforms.</em><br>In 15 days.</h1>
+    <p class="hero-sub">India's first daily skincare challenge. Morning + night in biodegradable kraft sachets. Zero bottles. Made with Neem, Haldi & Chandan.</p>
+    <div class="hero-pills">
+      <span class="pill">8 Steps Daily</span>
+      <span class="pill">15 Days</span>
+      <span class="pill">Biodegradable</span>
+      <span class="pill">Indian Skin</span>
+    </div>
+    <div class="hero-pricing">
+      <div class="hero-price-card" style="position:relative;">
+        <div class="hero-card-info">
+          <h4>Morning Only</h4>
+          <p>15 morning bundles · 5 steps daily · 75 sachets</p>
+        </div>
+        <div class="hero-card-right">
+          <span class="hero-card-price">₹1,299</span>
+          <button class="hero-card-btn" onclick="openModal('morning')">Order Now</button>
+        </div>
+      </div>
+      <div class="hero-price-card featured-card" style="position:relative;">
+        <div class="hero-card-tag">Most Popular</div>
+        <div class="hero-card-info">
+          <h4>Complete Kit</h4>
+          <p>Morning + Night · All 8 steps · 120 sachets</p>
+        </div>
+        <div class="hero-card-right">
+          <span class="hero-card-price">₹1,999</span>
+          <button class="hero-card-btn" onclick="openModal('complete')">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <p class="hero-trust">✦ Free shipping pan India &nbsp;·&nbsp; Secure Razorpay &nbsp;·&nbsp; Ships in 6 weeks</p>
+    <a href="#how" class="btn-secondary">See how it works →</a>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item"><span class="strip-dot"></span> 100% Biodegradable</span>
+    <span class="strip-item"><span class="strip-dot"></span> Made for Indian Skin</span>
+    <span class="strip-item"><span class="strip-dot"></span> Neem · Haldi · Chandan · Saffron</span>
+    <span class="strip-item"><span class="strip-dot"></span> Zero Plastic Bottles</span>
+    <span class="strip-item"><span class="strip-dot"></span> Pre-measured Daily Doses</span>
+    <span class="strip-item"><span class="strip-dot"></span> Free Shipping Pan India</span>
+    <span class="strip-item"><span class="strip-dot"></span> 100% Biodegradable</span>
+    <span class="strip-item"><span class="strip-dot"></span> Made for Indian Skin</span>
+    <span class="strip-item"><span class="strip-dot"></span> Neem · Haldi · Chandan · Saffron</span>
+    <span class="strip-item"><span class="strip-dot"></span> Zero Plastic Bottles</span>
+    <span class="strip-item"><span class="strip-dot"></span> Pre-measured Daily Doses</span>
+    <span class="strip-item"><span class="strip-dot"></span> Free Shipping Pan India</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <p class="section-label">The Problem</p>
+  <h2 class="section-title">Your shelf is <em>out of control.</em></h2>
+  <div class="problem-grid">
+    <div class="problem-cards">
+      <div class="problem-card">
+        <div class="problem-num">I</div>
+        <div>
+          <h3>Too Many Products</h3>
+          <p>6 different bottles. Different brands, different prices. Complete confusion every morning before college or work.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">II</div>
+        <div>
+          <h3>Too Much Time</h3>
+          <p>20 minutes every morning just figuring out what goes first, what to skip, and what's already finished.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">III</div>
+        <div>
+          <h3>Too Expensive</h3>
+          <p>₹3,000+ per month on products you'll never fully use. Half-empty bottles collecting dust.</p>
+        </div>
+      </div>
+    </div>
+    <div class="problem-image">
+      <img src="sachets.jpg" alt="MELT 8 sachets — the solution">
+    </div>
+  </div>
+</section>
+
+<!-- SACHETS / SOLUTION -->
+<section class="sachets-section" id="solution">
+  <p class="section-label">The Solution</p>
+  <h2 class="section-title">One box. 15 days. <em>Done.</em></h2>
+  <div class="sachets-grid">
+    <div class="sachets-image">
+      <img src="sachets.jpg" alt="All 8 MELT sachets">
+    </div>
+    <div class="sachets-steps">
+      <div class="step-group-label">🌅 Morning — 5 Steps</div>
+      <div class="step-item"><div class="step-num">01</div><div class="step-info"><h4>Reset — Cleanser</h4><span>Neem + Salicylic Acid + Zinc PCA · 10ml</span></div></div>
+      <div class="step-item"><div class="step-num">02</div><div class="step-info"><h4>Clear — Toner</h4><span>Niacinamide 5% + Alpha Arbutin + Witch Hazel · 5ml</span></div></div>
+      <div class="step-item"><div class="step-num">03</div><div class="step-info"><h4>Treat — Serum</h4><span>Ascorbyl Glucoside + Centella + Niacinamide</span></div></div>
+      <div class="step-item"><div class="step-num">04</div><div class="step-info"><h4>Hydrate — Moisturiser</h4><span>Hyaluronic Acid + Aloe</span></div></div>
+      <div class="step-item"><div class="step-num">05</div><div class="step-info"><h4>Control — Finishing</h4><span>Niacinamide 10% + Zinc PCA</span></div></div>
+      <div class="step-group-label">🌙 Night — 3 Steps</div>
+      <div class="step-item"><div class="step-num">06</div><div class="step-info"><h4>Reset PM — Oil Cleanser</h4><span>Chandan + BHA 0.3% + Micellar · 10ml</span></div></div>
+      <div class="step-item"><div class="step-num">07</div><div class="step-info"><h4>Repair — Night Serum</h4><span>Bakuchiol 1% + Niacinamide + Tranexamic Acid · 10ml</span></div></div>
+      <div class="step-item"><div class="step-num">08</div><div class="step-info"><h4>Rebuild — Night Cream</h4><span>Ceramide + Peptides + Saffron · 8ml</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">Three steps. <em>Every day.</em></h2>
+  <div class="how-grid">
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div>
+          <h3>Peel the Band</h3>
+          <p>Each morning, pull out your DAY bundle from the box. Slide off the kraft band — morning and night sachets, all sorted in order.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div>
+          <h3>Tear & Apply</h3>
+          <p>Tear each sachet in order. Your exact daily dose — no measuring, no waste, no guessing. The sequence is done for you.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div>
+          <h3>See the Glow</h3>
+          <p>A complete routine in under 2 minutes. By Day 15, your skin tells the story. That's the challenge.</p>
+        </div>
+      </div>
+    </div>
+    <div class="how-image">
+      <img src="tear.jpg" alt="Peeling the DAY 01 band from MELT bundle">
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <p class="section-label">Simple Pricing</p>
+  <h2 class="section-title">One decision. <em>Your skin wins.</em></h2>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <p class="price-name">Morning Only</p>
+      <div class="price-amount">₹1,299</div>
+      <p class="price-sub">15-day morning kit · Free shipping</p>
+      <ul class="price-features">
+        <li>15 Morning Bundles (Day 1–15)</li>
+        <li>5 steps daily — Cleanser, Toner, Serum, Moisturiser, Finishing</li>
+        <li>Neem + Haldi + Centella</li>
+        <li>75 pre-measured sachets total</li>
+      </ul>
+      <button class="btn-buy" onclick="openModal('morning')">Order — ₹1,299</button>
+    </div>
+
+    <div class="price-card featured">
+      <div class="featured-tag">Most Popular</div>
+      <p class="price-name">Complete Kit</p>
+      <div class="price-amount">₹1,999</div>
+      <p class="price-sub">Morning + Night · Save vs buying separate</p>
+      <ul class="price-features">
+        <li>15 Complete Day Bundles</li>
+        <li>All 8 steps — morning + night</li>
+        <li>Neem, Haldi, Chandan, Saffron, Bakuchiol</li>
+        <li>120 pre-measured sachets total</li>
+      </ul>
+      <button class="btn-buy" onclick="openModal('complete')">Order — ₹1,999</button>
+    </div>
+
+  </div>
+  <div class="pricing-trust">
+    <span class="trust-item">✦ Secure Razorpay</span>
+    <span class="trust-item">✦ UPI · Cards · Net Banking</span>
+    <span class="trust-item">✦ Free shipping pan India</span>
+    <span class="trust-item">✦ Ships in 6 weeks</span>
+  </div>
+</section>
+
+<!-- WHY MELT -->
+<section class="why-section" id="why">
+  <p class="section-label">Why MELT</p>
+  <h2 class="section-title">Different in <em>every way.</em></h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🌿</div>
+      <h3>Indian Skin First</h3>
+      <p>Neem, Haldi, Chandan, Saffron — ingredients India has trusted for 1000 years, now in precise daily doses.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">♻️</div>
+      <h3>Zero Waste</h3>
+      <p>100% biodegradable kraft paper. No plastic bottles ever. Every MELT kit replaces 6 plastic bottles.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚗️</div>
+      <h3>Exact Doses</h3>
+      <p>Pre-measured amounts every single day. No waste from half-empty bottles. Consistent results, no guessing.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎒</div>
+      <h3>Travel Ready</h3>
+      <p>No liquids. No leaking. Fits in your college bag. Perfect for hostel life, travel, or overnight stays.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Always Fresh</h3>
+      <p>Each sachet is sealed individually. Zero oxidation — unlike big bottles you open every single day.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📅</div>
+      <h3>Built for Consistency</h3>
+      <p>DAY 1 through DAY 15 makes it impossible to skip. The hardest part of skincare — solved.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <p class="section-label">Questions</p>
+  <h2 class="section-title">We've got <em>answers.</em></h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is MELT safe for all skin types? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes. MELT is formulated specifically for Indian skin — oily, dry, combination, and sensitive. The actives are at concentrations safe for daily use from Day 1.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">When will my order ship? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">We're taking pre-orders for our first batch of 50 units. Your kit ships within 6 weeks. We'll update you on WhatsApp every step of the way.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What if I don't like it? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Message us on WhatsApp. Full replacement or refund — no catch, no forms. We earn your trust or we don't deserve your money.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is the packaging actually biodegradable? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes. The outer kraft paper is 100% natural, recycled, and compostable. Every MELT kit replaces 6 plastic bottles from going to landfill.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I use the DAY bundles? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Each morning, pull out that day's bundle and slide off the paper band. Use the 5 morning sachets in order. Before bed, use the 3 night sachets. Done in under 2 minutes.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I pay and confirm my order? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Click any Order button, fill your shipping details, then complete payment via Razorpay — UPI, cards, and net banking all work. You'll get instant confirmation and we'll follow up on WhatsApp.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="section-label" style="color:var(--gold);">Limited First Batch</p>
+  <h2 class="section-title">Start your <em>15-day journey.</em></h2>
+  <p>50 units only. Free shipping pan India. Your skin in 15 days.</p>
+  <div class="final-buttons">
+    <button class="btn-gold" onclick="openModal('complete')">Complete Kit — ₹1,999</button>
+    <button class="btn-outline-light" onclick="openModal('morning')">Morning Only — ₹1,299</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="nav-logo">MELT</a>
+  <p>Skincare that melts into you · Made for Indian skin</p>
+  <a href="https://instagram.com/meltskinn" target="_blank">@meltskinn ↗</a>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-badge">Secure Order</div>
+    <h2>Almost there.</h2>
+    <p class="modal-product">You're ordering: <strong id="modalProductName">Complete Kit — ₹1,999</strong><br>We need your delivery address before payment.</p>
+
+    <form id="orderForm" onsubmit="submitOrder(event)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="fname" placeholder="As on ID" required>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp Number</label>
+        <input type="tel" id="fphone" placeholder="+91 98765 43210" required>
+      </div>
+      <div class="form-group">
+        <label>Full Delivery Address</label>
+        <textarea id="faddress" placeholder="Flat/House No, Street, Area, City" required></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Pincode</label>
+          <input type="text" id="fpincode" placeholder="110001" maxlength="6" required>
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <input type="text" id="fstate" placeholder="Delhi" required>
+        </div>
+      </div>
+      <button type="submit" class="modal-submit" id="submitBtn">Continue to Payment →</button>
+      <p class="modal-note">Your details are saved securely. After submitting, you'll be redirected to Razorpay to complete payment.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // PRODUCT CONFIG
+  const products = {
+    morning: {
+      name: 'Morning Only — ₹1,299',
+      link: 'https://rzp.io/rzp/hAwWQbEg'
+    },
+    complete: {
+      name: 'Complete Kit — ₹1,999',
+      link: 'https://rzp.io/rzp/cfHG9iC'
+    }
+  };
+
+  let currentProduct = 'complete';
+
+  function openModal(product) {
+    currentProduct = product;
+    document.getElementById('modalProductName').textContent = products[product].name;
+    document.getElementById('orderModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('orderModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('orderModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  async function submitOrder(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    const data = {
+      product: products[currentProduct].name,
+      name: document.getElementById('fname').value,
+      phone: document.getElementById('fphone').value,
+      address: document.getElementById('faddress').value,
+      pincode: document.getElementById('fpincode').value,
+      state: document.getElementById('fstate').value,
+    };
+
+    // Submit to Formspree — replace YOUR_FORM_ID with your actual Formspree form ID
+    // Sign up free at formspree.io, create a form, paste the ID below
+    const FORMSPREE_ID = 'xdayezko';
+
+    try {
+      await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(err) {
+      // Even if formspree fails, still redirect to payment
+      console.log('Form submit error, proceeding to payment anyway');
+    }
+
+    // Redirect to Razorpay
+    window.location.href = products[currentProduct].link;
+  }
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    item.classList.toggle('open');
+  }
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      const sectionHeight = section.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          a.style.color = '';
+          if (a.getAttribute('href') === `#${section.id}`) {
+            a.style.color = 'var(--kraft)';
+          }
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
