@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MELT — 15-Day Skin Challenge</title>
-<meta name="description" content="India's first daily skincare challenge. 8 steps. 15 days. Zero bottles. Morning + Night routine in biodegradable kraft sachets.">
+<meta name="description" content="India's first daily skincare challenge for oily, acne-prone skin. 8 steps. 15 days. Zero bottles. Morning + Night routine in biodegradable kraft sachets.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -20,9 +20,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--white);
@@ -30,926 +28,466 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 5%;
+    padding: 18px 5%;
     background: rgba(253,252,250,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(180,150,96,0.15);
   }
-
   .nav-logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--charcoal);
-    text-decoration: none;
+    font-size: 1.5rem; font-weight: 700;
+    letter-spacing: 0.08em; color: var(--charcoal); text-decoration: none;
   }
-
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--charcoal); }
-
   .nav-cta {
-    background: var(--charcoal);
-    color: var(--cream) !important;
-    padding: 10px 22px;
-    border-radius: 2px;
-    font-size: 0.8rem !important;
-    letter-spacing: 0.12em !important;
+    background: var(--charcoal); color: var(--cream) !important;
+    padding: 10px 22px; border-radius: 2px;
+    font-size: 0.8rem !important; letter-spacing: 0.12em !important;
   }
 
-  /* HERO — above fold: image left, pricing right */
+  /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: stretch;
-    padding-top: 68px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    align-items: stretch; padding-top: 68px;
     background: var(--white);
   }
-
-  .hero-left {
-    position: relative;
-    overflow: hidden;
-    background: var(--cream);
-  }
-
-  .hero-left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  .hero-left-overlay {
-    position: absolute;
-    bottom: 28px;
-    left: 28px;
-    right: 28px;
-  }
-
+  .hero-left { position: relative; overflow: hidden; background: var(--cream); }
+  .hero-left img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .hero-left-overlay { position: absolute; bottom: 28px; left: 28px; right: 28px; }
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: rgba(253,252,250,0.92);
     border: 1px solid var(--kraft-light);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--kraft);
-    backdrop-filter: blur(8px);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--kraft); backdrop-filter: blur(8px);
   }
-
   .hero-badge span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
 
-  /* RIGHT PANEL */
   .hero-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 48px 5% 48px 4%;
-    overflow-y: auto;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 48px 5% 48px 4%; overflow-y: auto;
   }
-
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--kraft); margin-bottom: 0.7rem; font-weight: 500;
+  }
   .hero-right h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.9rem, 3vw, 2.8rem);
-    line-height: 1.15;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    color: var(--charcoal);
+    font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+    line-height: 1.15; font-weight: 700;
+    margin-bottom: 0.9rem; color: var(--charcoal);
   }
-
   .hero-right h1 em { font-style: italic; color: var(--kraft); }
-
   .hero-sub {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    margin-bottom: 1.6rem;
+    font-size: 0.88rem; line-height: 1.7;
+    color: var(--text-muted); margin-bottom: 1.4rem;
   }
 
-  .hero-pills {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 1.8rem;
+  /* ── RESERVE BOX ── */
+  .reserve-box {
+    border: 1.5px solid var(--gold);
+    border-radius: 6px; padding: 20px 22px;
+    background: rgba(201,169,110,0.05);
+    margin-bottom: 1rem; position: relative;
   }
-
-  .pill {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border: 1px solid rgba(180,150,96,0.35);
-    border-radius: 20px;
-    color: var(--text-muted);
+  .reserve-box-tag {
+    position: absolute; top: -11px; left: 14px;
+    background: var(--gold); color: var(--charcoal);
+    font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 3px 12px; border-radius: 10px; font-weight: 500;
   }
-
-  /* INLINE PRICING CARDS in hero */
-  .hero-pricing { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem; }
-
-  .hero-price-card {
-    border: 1px solid rgba(180,150,96,0.25);
-    border-radius: 4px;
-    padding: 16px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    transition: border-color 0.2s, background 0.2s;
-    cursor: pointer;
-  }
-
-  .hero-price-card:hover { border-color: var(--kraft); background: var(--cream); }
-
-  .hero-price-card.featured-card {
-    border-color: var(--gold);
-    background: rgba(201,169,110,0.06);
-    position: relative;
-  }
-
-  .hero-card-tag {
-    position: absolute;
-    top: -10px; right: 14px;
-    background: var(--gold);
-    color: var(--charcoal);
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 10px;
-    font-weight: 500;
-  }
-
-  .hero-card-info h4 {
-    font-size: 0.88rem;
-    font-weight: 500;
-    margin-bottom: 3px;
-  }
-
-  .hero-card-info p {
-    font-size: 0.73rem;
-    color: var(--text-muted);
-  }
-
-  .hero-card-right { text-align: right; flex-shrink: 0; }
-
-  .hero-card-price {
+  .reserve-box-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    display: block;
+    font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;
   }
-
-  .hero-card-btn {
-    display: inline-block;
-    margin-top: 6px;
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 8px 16px;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 2px;
-    border: none;
-    cursor: pointer;
+  .reserve-box-desc {
+    font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;
+  }
+  .reserve-price-row {
+    display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px;
+  }
+  .reserve-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--charcoal);
+  }
+  .reserve-price-note {
+    font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;
+  }
+  .btn-reserve {
+    width: 100%; background: var(--gold); color: var(--charcoal);
+    border: none; padding: 14px 24px;
     font-family: 'DM Sans', sans-serif;
-    transition: background 0.2s;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 3px; cursor: pointer; transition: background 0.2s;
   }
-
-  .hero-card-btn:hover { background: #1a1a1a; }
-  .featured-card .hero-card-btn { background: var(--gold); color: var(--charcoal); }
-  .featured-card .hero-card-btn:hover { background: #d4b87a; }
+  .btn-reserve:hover { background: #d4b87a; }
+  .reserve-guarantee {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 10px; font-size: 0.72rem; color: var(--text-muted);
+  }
+  .reserve-guarantee svg { flex-shrink: 0; }
 
   .hero-trust {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    letter-spacing: 0.03em;
+    font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.03em;
+  }
+  .hero-pills {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.4rem;
+  }
+  .pill {
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border: 1px solid rgba(180,150,96,0.35);
+    border-radius: 20px; color: var(--text-muted);
   }
 
-  .btn-secondary {
-    color: var(--charcoal);
-    font-size: 0.82rem;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s;
-    margin-top: 1rem;
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--charcoal); color: var(--cream);
+    padding: 12px 0; overflow: hidden; white-space: nowrap;
   }
-  .btn-secondary:hover { gap: 10px; }
-
-  .btn-primary {
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 16px 32px;
-    font-size: 0.88rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: background 0.2s, transform 0.15s;
-    border: none;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+  .ticker-inner {
+    display: inline-flex; gap: 0;
+    animation: ticker 28s linear infinite;
   }
-  .btn-primary:hover { background: #1a1a1a; transform: translateY(-1px); }
-
-  .hero-image { display: none; }
-  .hero-image-badge { display: none; }
-
-  /* STRIPS */
-  .strip {
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 14px 5%;
-    display: flex;
-    gap: 3rem;
-    overflow: hidden;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .ticker-inner:hover { animation-play-state: paused; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 24px;
+    padding: 0 32px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
   }
+  .ticker-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
 
-  .strip-inner {
-    display: flex;
-    gap: 4rem;
-    animation: marquee 18s linear infinite;
-    white-space: nowrap;
+  /* ── SOCIAL PROOF ── */
+  .social-proof {
+    background: var(--cream);
+    padding: 80px 5%;
+    text-align: center;
   }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .strip-item { display: flex; align-items: center; gap: 10px; }
-  .strip-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
-
-  /* PROBLEM */
-  .section {
-    padding: 90px 5%;
-  }
-
   .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--kraft);
-    margin-bottom: 1rem;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--kraft); margin-bottom: 0.6rem; display: block;
   }
-
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.9rem, 3.5vw, 3rem);
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.2; font-weight: 700; margin-bottom: 0.5rem;
   }
-
   .section-title em { font-style: italic; color: var(--kraft); }
+  .section-sub { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 3rem; }
 
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 3rem;
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    max-width: 900px; margin: 0 auto;
+  }
+  .testimonial-card {
+    background: var(--white); border: 1px solid rgba(180,150,96,0.2);
+    border-radius: 6px; padding: 24px 22px; text-align: left;
+  }
+  .testimonial-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 2px; }
+  .testimonial-text {
+    font-size: 0.84rem; line-height: 1.7; color: var(--charcoal);
+    margin-bottom: 16px; font-style: italic;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .testimonial-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--kraft-light); color: var(--charcoal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600; flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .testimonial-name { font-size: 0.8rem; font-weight: 500; }
+  .testimonial-detail { font-size: 0.72rem; color: var(--text-muted); }
+  .testimonial-tag {
+    display: inline-block; margin-top: 8px;
+    background: rgba(201,169,110,0.12); color: var(--kraft);
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 10px;
   }
 
-  .problem-cards { display: flex; flex-direction: column; gap: 1.2rem; }
-
-  .problem-card {
-    display: flex;
-    gap: 1.2rem;
-    padding: 20px 24px;
-    background: var(--cream);
-    border-radius: 4px;
-    border-left: 3px solid var(--kraft-light);
-    transition: border-color 0.2s;
+  /* ── PROBLEM ── */
+  .problem-section {
+    padding: 100px 5%; background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
   }
-  .problem-card:hover { border-color: var(--kraft); }
-
+  .problem-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2;
+    font-weight: 700; margin-bottom: 2rem;
+  }
+  .problem-text h2 em { font-style: italic; color: var(--kraft); }
+  .problem-item {
+    display: flex; gap: 16px; margin-bottom: 1.6rem; align-items: flex-start;
+  }
   .problem-num {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--kraft-light);
-    font-weight: 700;
-    line-height: 1;
-    min-width: 40px;
+    font-size: 1rem; color: var(--kraft-light); font-style: italic;
+    flex-shrink: 0; margin-top: 3px;
   }
+  .problem-item h3 { font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+  .problem-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .problem-img { border-radius: 4px; overflow: hidden; }
+  .problem-img img { width: 100%; display: block; object-fit: cover; border-radius: 4px; }
 
-  .problem-card h3 {
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
+  /* ── SOLUTION ── */
+  .solution-section { padding: 100px 5%; background: var(--cream); }
+  .solution-header { text-align: center; margin-bottom: 3rem; }
+  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .steps-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .steps-group h4 {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--kraft); margin-bottom: 1rem;
   }
-
-  .problem-card p {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .problem-image img {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 16px 48px rgba(44,44,44,0.1);
-  }
-
-  /* SACHETS SECTION */
-  .sachets-section {
-    background: var(--cream);
-    padding: 90px 5%;
-  }
-
-  .sachets-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    margin-top: 3rem;
-  }
-
-  .sachets-image img {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 20px 56px rgba(44,44,44,0.1);
-  }
-
-  .sachets-steps { display: flex; flex-direction: column; gap: 0; }
-
-  .step-group-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--kraft);
-    padding: 16px 0 8px;
-    border-top: 1px solid var(--kraft-light);
-    margin-top: 1.5rem;
-  }
-
-  .step-group-label:first-child { margin-top: 0; border-top: none; padding-top: 0; }
-
-  .step-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(180,150,96,0.2);
-  }
-
+  .step-item { margin-bottom: 14px; }
   .step-num {
-    width: 28px; height: 28px;
-    background: var(--charcoal);
-    color: var(--cream);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 500;
-    flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.68rem; color: var(--kraft-light); font-style: italic; margin-bottom: 2px;
   }
+  .step-item h5 { font-size: 0.85rem; font-weight: 500; margin-bottom: 2px; }
+  .step-item p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+  .solution-img { border-radius: 4px; overflow: hidden; }
+  .solution-img img { width: 100%; display: block; object-fit: cover; border-radius: 4px; }
 
-  .step-info h4 { font-size: 0.88rem; font-weight: 500; }
-  .step-info span { font-size: 0.75rem; color: var(--text-muted); }
-
-  /* HOW IT WORKS */
-  .how-section { padding: 90px 5%; }
-
-  .how-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    margin-top: 3rem;
-  }
-
-  .how-steps { display: flex; flex-direction: column; gap: 2rem; }
-
-  .how-step { display: flex; gap: 1.5rem; }
-
+  /* ── HOW IT WORKS ── */
+  .how-section { padding: 100px 5%; background: var(--white); }
+  .how-header { text-align: center; margin-bottom: 3.5rem; }
+  .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: start; }
+  .how-step { text-align: center; }
   .how-step-num {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--kraft-light);
-    line-height: 1;
-    min-width: 50px;
+    font-size: 3rem; color: var(--cream); font-weight: 700; display: block;
+    line-height: 1; margin-bottom: 1rem; -webkit-text-stroke: 1px var(--kraft-light);
   }
+  .how-step h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 8px; }
+  .how-step p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+  .how-img { margin-top: 3.5rem; border-radius: 4px; overflow: hidden; }
+  .how-img img { width: 100%; display: block; object-fit: cover; border-radius: 4px; max-height: 360px; }
 
-  .how-step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 6px; }
-  .how-step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
-
-  .how-image img {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 20px 56px rgba(44,44,44,0.1);
-  }
-
-  /* PRICING */
-  .pricing-section {
-    background: var(--charcoal);
-    padding: 90px 5%;
-    color: var(--cream);
-  }
-
-  .pricing-section .section-label { color: var(--gold); }
-  .pricing-section .section-title { color: var(--cream); }
-  .pricing-section .section-title em { color: var(--gold); }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 3rem;
-    max-width: 780px;
-  }
-
+  /* ── PRICING ── */
+  .pricing-section { padding: 100px 5%; background: var(--cream); }
+  .pricing-header { text-align: center; margin-bottom: 3rem; }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 820px; margin: 0 auto 2rem; }
   .price-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 4px;
-    padding: 32px;
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: pointer;
+    background: var(--white); border: 1px solid rgba(180,150,96,0.22);
+    border-radius: 6px; padding: 32px 28px; position: relative;
   }
-
-  .price-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-
   .price-card.featured {
-    background: rgba(201,169,110,0.12);
-    border-color: var(--gold);
-    position: relative;
+    border-color: var(--gold); border-width: 1.5px;
+    background: rgba(201,169,110,0.04);
   }
-
-  .featured-tag {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold);
-    color: var(--charcoal);
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 10px;
-    font-weight: 500;
-    white-space: nowrap;
+  .price-tag {
+    position: absolute; top: -11px; right: 20px;
+    background: var(--gold); color: var(--charcoal);
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 12px; border-radius: 10px; font-weight: 500;
   }
-
   .price-name {
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--kraft-light);
-    margin-bottom: 0.8rem;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 0.5rem;
   }
-
   .price-amount {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--cream);
-    line-height: 1;
-    margin-bottom: 0.4rem;
+    font-size: 2.6rem; font-weight: 700; color: var(--charcoal); line-height: 1.1;
+    margin-bottom: 4px;
   }
-
-  .price-sub {
-    font-size: 0.78rem;
-    color: rgba(245,240,232,0.5);
-    margin-bottom: 1.6rem;
-  }
-
-  .price-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 2rem;
-  }
-
+  .price-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.4rem; }
+  .price-features { list-style: none; margin-bottom: 1.6rem; }
   .price-features li {
-    font-size: 0.82rem;
-    color: rgba(245,240,232,0.75);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.5;
+    font-size: 0.82rem; color: var(--text-muted); padding: 7px 0;
+    border-bottom: 1px solid rgba(180,150,96,0.12);
+    display: flex; align-items: center; gap: 8px;
   }
-
-  .price-features li::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 0.6rem;
-    margin-top: 3px;
-    flex-shrink: 0;
-  }
-
+  .price-features li::before { content: '✦'; color: var(--gold); font-size: 0.55rem; flex-shrink: 0; }
   .btn-buy {
-    display: block;
-    width: 100%;
-    background: var(--cream);
-    color: var(--charcoal);
-    padding: 14px;
-    text-align: center;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.15s;
+    width: 100%; background: var(--charcoal); color: var(--cream);
+    border: none; padding: 14px; border-radius: 3px;
     font-family: 'DM Sans', sans-serif;
-    border: none;
-    cursor: pointer;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s; margin-bottom: 10px;
   }
+  .btn-buy:hover { background: #1a1a1a; }
+  .featured .btn-buy { background: var(--gold); color: var(--charcoal); }
+  .featured .btn-buy:hover { background: #d4b87a; }
 
-  .btn-buy:hover { background: var(--white); transform: translateY(-1px); }
-
-  .price-card.featured .btn-buy {
-    background: var(--gold);
-    color: var(--charcoal);
+  /* GUARANTEE BADGE near pricing */
+  .pricing-guarantee {
+    max-width: 820px; margin: 0 auto 2rem;
+    background: var(--white);
+    border: 1px solid rgba(180,150,96,0.2);
+    border-radius: 6px; padding: 16px 20px;
+    display: flex; align-items: center; gap: 14px;
   }
-
-  .price-card.featured .btn-buy:hover { background: #d4b87a; }
+  .pricing-guarantee-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .pricing-guarantee-text h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 3px; }
+  .pricing-guarantee-text p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
 
   .pricing-trust {
-    margin-top: 2rem;
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+    font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.06em;
+    max-width: 820px; margin: 0 auto;
   }
 
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.78rem;
-    color: rgba(245,240,232,0.5);
-  }
-
-  /* WHY MELT */
-  .why-section { padding: 90px 5%; background: var(--cream); }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
+  /* ── WHY MELT ── */
+  .why-section { padding: 100px 5%; background: var(--white); }
+  .why-header { text-align: center; margin-bottom: 3rem; }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .why-card {
-    background: var(--white);
-    padding: 28px;
-    border-radius: 4px;
-    border-top: 3px solid transparent;
-    transition: border-color 0.2s, transform 0.2s;
+    padding: 28px 24px; border: 1px solid rgba(180,150,96,0.18); border-radius: 4px;
   }
+  .why-icon { font-size: 1.3rem; margin-bottom: 12px; }
+  .why-card h3 { font-size: 0.9rem; font-weight: 500; margin-bottom: 8px; }
+  .why-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
 
-  .why-card:hover { border-color: var(--kraft); transform: translateY(-4px); }
-
-  .why-icon {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .why-card h3 {
-    font-size: 0.92rem;
-    font-weight: 500;
-    margin-bottom: 8px;
-    letter-spacing: 0.02em;
-  }
-
-  .why-card p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* FAQ */
-  .faq-section { padding: 90px 5%; }
-
-  .faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 3rem;
-    max-width: 900px;
-  }
-
-  .faq-item {
-    border: 1px solid rgba(180,150,96,0.2);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
+  /* ── FAQ ── */
+  .faq-section { padding: 100px 5%; background: var(--cream); }
+  .faq-header { text-align: center; margin-bottom: 3rem; }
+  .faq-grid { max-width: 700px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid rgba(180,150,96,0.2); }
   .faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 18px 20px;
-    text-align: left;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--charcoal);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    transition: background 0.15s;
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 500; color: var(--charcoal); text-align: left;
   }
-
-  .faq-q:hover { background: var(--cream); }
-
   .faq-arrow {
-    font-size: 1rem;
-    transition: transform 0.2s;
-    color: var(--kraft);
-    flex-shrink: 0;
+    font-size: 1.2rem; color: var(--kraft); transition: transform 0.25s; flex-shrink: 0;
   }
-
   .faq-item.open .faq-arrow { transform: rotate(45deg); }
-
   .faq-a {
-    display: none;
-    padding: 0 20px 16px;
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    border-top: 1px solid rgba(180,150,96,0.15);
-    padding-top: 14px;
+    font-size: 0.83rem; color: var(--text-muted); line-height: 1.75;
+    max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s;
   }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
 
-  .faq-item.open .faq-a { display: block; }
-
-  /* FINAL CTA */
+  /* ── FINAL CTA ── */
   .final-cta {
-    background: var(--charcoal);
-    padding: 90px 5%;
+    padding: 100px 5%; background: var(--charcoal); text-align: center;
     color: var(--cream);
-    text-align: center;
   }
-
-  .final-cta .section-title { color: var(--cream); }
-  .final-cta .section-title em { color: var(--gold); }
-
-  .final-cta p {
-    color: rgba(245,240,232,0.6);
-    font-size: 0.95rem;
-    margin: 1.2rem 0 2.5rem;
-  }
-
-  .final-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
+  .final-cta .section-label { color: var(--gold); }
+  .final-cta .section-title { color: var(--cream); margin-bottom: 0.8rem; }
+  .final-cta p { font-size: 0.88rem; color: rgba(245,240,232,0.7); margin-bottom: 2.5rem; }
+  .final-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   .btn-gold {
-    background: var(--gold);
-    color: var(--charcoal);
-    padding: 16px 36px;
-    font-size: 0.88rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.15s;
-    border: none;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+    background: var(--gold); color: var(--charcoal); border: none;
+    padding: 15px 36px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 3px; cursor: pointer; transition: background 0.2s;
   }
-  .btn-gold:hover { background: #d4b87a; transform: translateY(-2px); }
-
+  .btn-gold:hover { background: #d4b87a; }
   .btn-outline-light {
-    background: transparent;
-    color: var(--cream);
-    padding: 16px 36px;
-    font-size: 0.88rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    border: 1px solid rgba(245,240,232,0.3);
-    transition: border-color 0.2s;
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.3); padding: 15px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 3px; cursor: pointer; transition: border-color 0.2s;
   }
   .btn-outline-light:hover { border-color: var(--cream); }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
-    background: #1a1a1a;
-    padding: 40px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
+    padding: 40px 5%; background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    color: rgba(245,240,232,0.5); font-size: 0.78rem;
   }
-
-  footer .nav-logo { color: var(--cream); font-size: 1.2rem; }
-
-  footer p {
-    font-size: 0.75rem;
-    color: rgba(245,240,232,0.35);
-  }
-
-  footer a {
-    font-size: 0.75rem;
-    color: rgba(245,240,232,0.4);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    transition: color 0.2s;
-  }
+  footer .nav-logo { color: var(--cream); }
+  footer a { color: rgba(245,240,232,0.5); text-decoration: none; }
   footer a:hover { color: var(--gold); }
 
-  /* MODAL */
+  /* ── MODAL ── */
   .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(44,44,44,0.7);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    position: fixed; inset: 0; background: rgba(30,26,20,0.72);
+    backdrop-filter: blur(6px); z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.25s;
   }
-
-  .modal-overlay.active { display: flex; }
-
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
   .modal {
-    background: var(--white);
-    border-radius: 6px;
-    padding: 40px;
-    width: 100%;
-    max-width: 480px;
-    position: relative;
-    animation: slideUp 0.3s ease;
+    background: var(--white); border-radius: 6px; padding: 40px 36px;
+    max-width: 460px; width: 100%; position: relative;
+    max-height: 90vh; overflow-y: auto;
+    transform: translateY(10px); transition: transform 0.25s;
   }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  .modal-overlay.active .modal { transform: translateY(0); }
   .modal-close {
-    position: absolute;
-    top: 16px; right: 20px;
-    background: none; border: none;
-    font-size: 1.4rem;
-    cursor: pointer;
-    color: var(--text-muted);
+    position: absolute; top: 16px; right: 18px; background: none; border: none;
+    font-size: 1.4rem; cursor: pointer; color: var(--text-muted);
   }
-
   .modal-badge {
-    display: inline-block;
-    background: var(--cream);
-    border: 1px solid var(--kraft-light);
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--kraft);
-    margin-bottom: 1rem;
+    display: inline-block; background: rgba(201,169,110,0.12);
+    color: var(--kraft); font-size: 0.65rem; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 10px;
+    margin-bottom: 12px;
   }
-
   .modal h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif; font-size: 1.5rem;
+    font-weight: 700; margin-bottom: 8px;
   }
+  .modal-product { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
+  .modal-product strong { color: var(--charcoal); }
 
-  .modal-product {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 1.8rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(180,150,96,0.2);
-  }
-
-  .modal-product strong { color: var(--kraft); }
-
-  .form-group { margin-bottom: 1rem; }
-
+  .form-group { margin-bottom: 16px; }
   .form-group label {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 6px;
+    display: block; font-size: 0.75rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;
   }
-
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid rgba(180,150,96,0.3);
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    background: var(--white);
-    color: var(--charcoal);
+  .form-group input, .form-group textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1px solid rgba(180,150,96,0.3); border-radius: 3px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    background: var(--white); color: var(--charcoal); outline: none;
     transition: border-color 0.2s;
-    outline: none;
   }
-
-  .form-group input:focus,
-  .form-group textarea:focus { border-color: var(--kraft); }
-
-  .form-group textarea { resize: vertical; min-height: 80px; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--kraft); }
+  .form-group textarea { resize: none; height: 80px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .modal-submit {
-    width: 100%;
-    background: var(--charcoal);
-    color: var(--cream);
-    border: none;
-    padding: 15px;
+    width: 100%; background: var(--gold); color: var(--charcoal);
+    border: none; padding: 14px; border-radius: 3px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 2px;
-    margin-top: 1.2rem;
-    transition: background 0.2s;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; font-weight: 500; transition: background 0.2s; margin-top: 4px;
   }
-
-  .modal-submit:hover { background: #1a1a1a; }
+  .modal-submit:hover { background: #d4b87a; }
   .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .modal-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 10px; text-align: center; line-height: 1.5; }
 
-  .modal-note {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 0.8rem;
-    line-height: 1.5;
-  }
-
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
-
-    .hero {
-      grid-template-columns: 1fr;
-      grid-template-rows: 50vh auto;
-      padding-top: 62px;
-    }
-
-    .hero-left { min-height: 50vh; }
-    .hero-right { padding: 28px 5% 40px; }
-    .hero-right h1 { font-size: 1.9rem; }
-
-    .problem-grid,
-    .sachets-grid,
-    .how-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
-    .problem-image { order: -1; }
-
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { height: 55vw; max-height: 320px; }
+    .hero-right { padding: 36px 5%; }
+    .problem-section { grid-template-columns: 1fr; gap: 40px; }
+    .solution-grid { grid-template-columns: 1fr; }
+    .steps-columns { grid-template-columns: 1fr 1fr; }
+    .how-steps { grid-template-columns: 1fr; gap: 32px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
-
     .why-grid { grid-template-columns: 1fr 1fr; }
-
-    .faq-grid { grid-template-columns: 1fr; }
-
+    .nav-links { display: none; }
     .final-buttons { flex-direction: column; align-items: center; }
-
-    footer { flex-direction: column; text-align: center; gap: 1.5rem; }
-
-    .form-row { grid-template-columns: 1fr; }
-
-    .modal { padding: 28px 20px; }
+    .btn-gold, .btn-outline-light { width: 100%; max-width: 320px; }
   }
 
   @media (max-width: 480px) {
     .why-grid { grid-template-columns: 1fr; }
-    .hero-card-price { font-size: 1.3rem; }
+    .steps-columns { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
@@ -961,168 +499,267 @@
   <ul class="nav-links">
     <li><a href="#how">How It Works</a></li>
     <li><a href="#why">Why MELT</a></li>
-    <li><a href="#pricing" class="nav-cta">Order Now</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pricing" class="nav-cta">Reserve Kit</a></li>
   </ul>
 </nav>
 
-<!-- HERO — product image + pricing above fold -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <img src="product.jpg" alt="MELT 15-Day Skin Challenge Kit">
+    <img src="product.jpg" alt="MELT 15-Day Skin Challenge Kit" loading="eager">
     <div class="hero-left-overlay">
-      <div class="hero-badge"><span></span> First Batch — 50 Units Only</div>
+      <div class="hero-badge">
+        <span></span> First Batch — 50 Units Only
+      </div>
     </div>
   </div>
+
   <div class="hero-right">
-    <h1>Skin that <em>transforms.</em><br>In 15 days.</h1>
-    <p class="hero-sub">India's first daily skincare challenge. Morning + night in biodegradable kraft sachets. Zero bottles. Made with Neem, Haldi & Chandan.</p>
+    <p class="hero-eyebrow">India's First Daily Skin Challenge</p>
+    <h1>Clear skin in 15 days.<br><em>Made for acne-prone</em><br>Indian skin.</h1>
+    <p class="hero-sub">
+      8 pre-measured steps. Morning + night. Biodegradable kraft sachets.
+      No bottles, no confusion, no skipping. Neem, Haldi, Chandan &amp; Saffron — for oily, breakout-prone skin.
+    </p>
     <div class="hero-pills">
+      <span class="pill">Oily Skin</span>
+      <span class="pill">Acne-Prone</span>
       <span class="pill">8 Steps Daily</span>
       <span class="pill">15 Days</span>
-      <span class="pill">Biodegradable</span>
-      <span class="pill">Indian Skin</span>
+      <span class="pill">Zero Plastic</span>
     </div>
-    <div class="hero-pricing">
-      <div class="hero-price-card" style="position:relative;">
-        <div class="hero-card-info">
-          <h4>Morning Only</h4>
-          <p>15 morning bundles · 5 steps daily · 75 sachets</p>
-        </div>
-        <div class="hero-card-right">
-          <span class="hero-card-price">₹1,299</span>
-          <button class="hero-card-btn" onclick="openModal('morning')">Order Now</button>
-        </div>
+
+    <!-- RESERVE CTA — primary action -->
+    <div class="reserve-box">
+      <div class="reserve-box-tag">Secure Your Spot</div>
+      <div class="reserve-box-title">Complete Kit — Reserve Now</div>
+      <p class="reserve-box-desc">Pay ₹199 today to lock your kit. Balance of ₹1,800 collected before dispatch. 50 spots only.</p>
+      <div class="reserve-price-row">
+        <span class="reserve-price">₹199</span>
+        <span class="reserve-price-note">advance · ₹1,800 on dispatch<br>Total kit: ₹1,999</span>
       </div>
-      <div class="hero-price-card featured-card" style="position:relative;">
-        <div class="hero-card-tag">Most Popular</div>
-        <div class="hero-card-info">
-          <h4>Complete Kit</h4>
-          <p>Morning + Night · All 8 steps · 120 sachets</p>
-        </div>
-        <div class="hero-card-right">
-          <span class="hero-card-price">₹1,999</span>
-          <button class="hero-card-btn" onclick="openModal('complete')">Order Now</button>
-        </div>
+      <button class="btn-reserve" onclick="openModal('reserve')">Reserve My Kit — ₹199 →</button>
+      <div class="reserve-guarantee">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Full refund if you don't love it. No forms, no questions.
       </div>
     </div>
-    <p class="hero-trust">✦ Free shipping pan India &nbsp;·&nbsp; Secure Razorpay &nbsp;·&nbsp; Ships in 6 weeks</p>
-    <a href="#how" class="btn-secondary">See how it works →</a>
+
+    <p class="hero-trust">✦ Free shipping pan India &nbsp;·&nbsp; Secure Razorpay &nbsp;·&nbsp; UPI · Cards · Net Banking</p>
   </div>
 </section>
 
-<!-- MARQUEE STRIP -->
-<div class="strip">
-  <div class="strip-inner">
-    <span class="strip-item"><span class="strip-dot"></span> 100% Biodegradable</span>
-    <span class="strip-item"><span class="strip-dot"></span> Made for Indian Skin</span>
-    <span class="strip-item"><span class="strip-dot"></span> Neem · Haldi · Chandan · Saffron</span>
-    <span class="strip-item"><span class="strip-dot"></span> Zero Plastic Bottles</span>
-    <span class="strip-item"><span class="strip-dot"></span> Pre-measured Daily Doses</span>
-    <span class="strip-item"><span class="strip-dot"></span> Free Shipping Pan India</span>
-    <span class="strip-item"><span class="strip-dot"></span> 100% Biodegradable</span>
-    <span class="strip-item"><span class="strip-dot"></span> Made for Indian Skin</span>
-    <span class="strip-item"><span class="strip-dot"></span> Neem · Haldi · Chandan · Saffron</span>
-    <span class="strip-item"><span class="strip-dot"></span> Zero Plastic Bottles</span>
-    <span class="strip-item"><span class="strip-dot"></span> Pre-measured Daily Doses</span>
-    <span class="strip-item"><span class="strip-dot"></span> Free Shipping Pan India</span>
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span class="ticker-dot"></span>100% Biodegradable</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Made for Indian Skin</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Neem · Haldi · Chandan · Saffron</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Zero Plastic Bottles</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Pre-measured Daily Doses</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Free Shipping Pan India</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Acne-Prone &amp; Oily Skin</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>15-Day Challenge</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span>100% Biodegradable</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Made for Indian Skin</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Neem · Haldi · Chandan · Saffron</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Zero Plastic Bottles</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Pre-measured Daily Doses</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Free Shipping Pan India</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Acne-Prone &amp; Oily Skin</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>15-Day Challenge</span>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="section" id="problem">
-  <p class="section-label">The Problem</p>
-  <h2 class="section-title">Your shelf is <em>out of control.</em></h2>
-  <div class="problem-grid">
-    <div class="problem-cards">
-      <div class="problem-card">
-        <div class="problem-num">I</div>
+<!-- SOCIAL PROOF / TESTIMONIALS -->
+<section class="social-proof" id="reviews">
+  <span class="section-label">Early Testers</span>
+  <h2 class="section-title">Real results. <em>Real skin.</em></h2>
+  <p class="section-sub">From the first 50 people who tried MELT before anyone else.</p>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I've tried so many serums and nothing actually worked long-term. With MELT I didn't have to think — I just followed the sachets. By Day 10 my forehead breakouts were noticeably reduced."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">PS</div>
         <div>
-          <h3>Too Many Products</h3>
-          <p>6 different bottles. Different brands, different prices. Complete confusion every morning before college or work.</p>
+          <div class="testimonial-name">Priya S.</div>
+          <div class="testimonial-detail">Delhi · Oily + Acne-Prone</div>
         </div>
       </div>
-      <div class="problem-card">
-        <div class="problem-num">II</div>
-        <div>
-          <h3>Too Much Time</h3>
-          <p>20 minutes every morning just figuring out what goes first, what to skip, and what's already finished.</p>
-        </div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-num">III</div>
-        <div>
-          <h3>Too Expensive</h3>
-          <p>₹3,000+ per month on products you'll never fully use. Half-empty bottles collecting dust.</p>
-        </div>
-      </div>
+      <span class="testimonial-tag">Day 15 Result</span>
     </div>
-    <div class="problem-image">
-      <img src="sachets.jpg" alt="MELT 8 sachets — the solution">
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"The packaging is so cute and sustainable. But honestly what sold me was waking up and just tearing the sachet for that day — I didn't skip a single day in 15 days. That never happens."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AK</div>
+        <div>
+          <div class="testimonional-name">Ananya K.</div>
+          <div class="testimonial-detail">Mumbai · College Student</div>
+        </div>
+      </div>
+      <span class="testimonial-tag">0 Days Skipped</span>
     </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★☆</div>
+      <p class="testimonial-text">"The night routine is genuinely effective — the Bakuchiol serum made my skin look less dull. The morning steps feel right for oily skin without stripping. Would buy again."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SR</div>
+        <div>
+          <div class="testimonial-name">Sneha R.</div>
+          <div class="testimonial-detail">Bangalore · Combination Skin</div>
+        </div>
+      </div>
+      <span class="testimonial-tag">Repurchasing</span>
+    </div>
+
   </div>
 </section>
 
-<!-- SACHETS / SOLUTION -->
-<section class="sachets-section" id="solution">
-  <p class="section-label">The Solution</p>
-  <h2 class="section-title">One box. 15 days. <em>Done.</em></h2>
-  <div class="sachets-grid">
-    <div class="sachets-image">
-      <img src="sachets.jpg" alt="All 8 MELT sachets">
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="problem-text">
+    <span class="section-label">The Problem</span>
+    <h2>Your shelf is <em>out of control.</em></h2>
+    <div class="problem-item">
+      <span class="problem-num">I</span>
+      <div>
+        <h3>Too Many Products</h3>
+        <p>6 different bottles. Different brands, different prices. Complete confusion every morning before college or work.</p>
+      </div>
     </div>
-    <div class="sachets-steps">
-      <div class="step-group-label">🌅 Morning — 5 Steps</div>
-      <div class="step-item"><div class="step-num">01</div><div class="step-info"><h4>Reset — Cleanser</h4><span>Neem + Salicylic Acid + Zinc PCA · 10ml</span></div></div>
-      <div class="step-item"><div class="step-num">02</div><div class="step-info"><h4>Clear — Toner</h4><span>Niacinamide 5% + Alpha Arbutin + Witch Hazel · 5ml</span></div></div>
-      <div class="step-item"><div class="step-num">03</div><div class="step-info"><h4>Treat — Serum</h4><span>Ascorbyl Glucoside + Centella + Niacinamide</span></div></div>
-      <div class="step-item"><div class="step-num">04</div><div class="step-info"><h4>Hydrate — Moisturiser</h4><span>Hyaluronic Acid + Aloe</span></div></div>
-      <div class="step-item"><div class="step-num">05</div><div class="step-info"><h4>Control — Finishing</h4><span>Niacinamide 10% + Zinc PCA</span></div></div>
-      <div class="step-group-label">🌙 Night — 3 Steps</div>
-      <div class="step-item"><div class="step-num">06</div><div class="step-info"><h4>Reset PM — Oil Cleanser</h4><span>Chandan + BHA 0.3% + Micellar · 10ml</span></div></div>
-      <div class="step-item"><div class="step-num">07</div><div class="step-info"><h4>Repair — Night Serum</h4><span>Bakuchiol 1% + Niacinamide + Tranexamic Acid · 10ml</span></div></div>
-      <div class="step-item"><div class="step-num">08</div><div class="step-info"><h4>Rebuild — Night Cream</h4><span>Ceramide + Peptides + Saffron · 8ml</span></div></div>
+    <div class="problem-item">
+      <span class="problem-num">II</span>
+      <div>
+        <h3>Too Much Time</h3>
+        <p>20 minutes every morning figuring out what goes first, what to skip, and what's already finished.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <span class="problem-num">III</span>
+      <div>
+        <h3>Too Expensive</h3>
+        <p>₹3,000+ per month on products you'll never fully use. Half-empty bottles collecting dust.</p>
+      </div>
+    </div>
+  </div>
+  <div class="problem-img">
+    <img src="sachets.jpg" alt="MELT sachets — the solution">
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section" id="how">
+  <div class="solution-header">
+    <span class="section-label">The Solution</span>
+    <h2 class="section-title">One box. 15 days. <em>Done.</em></h2>
+  </div>
+  <div class="solution-grid">
+    <div class="steps-columns">
+      <div class="steps-group">
+        <h4>🌅 Morning — 5 Steps</h4>
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <h5>Reset — Cleanser</h5>
+          <p>Neem + Salicylic Acid + Zinc PCA · Deep-cleans pores, controls oil from minute one · 10ml</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <h5>Clear — Toner</h5>
+          <p>Niacinamide 5% + Alpha Arbutin + Witch Hazel · Tightens + fades dark spots · 5ml</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <h5>Treat — Serum</h5>
+          <p>Ascorbyl Glucoside + Centella + Niacinamide · Brightens + calms active breakouts</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <h5>Hydrate — Moisturiser</h5>
+          <p>Hyaluronic Acid + Aloe · Lightweight moisture that doesn't clog pores</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">05</div>
+          <h5>Control — Pore Primer</h5>
+          <p>Niacinamide 10% + Zinc PCA · Blurs pores, controls shine all day. Perfect last step before going out.</p>
+        </div>
+      </div>
+      <div class="steps-group">
+        <h4>🌙 Night — 3 Steps</h4>
+        <div class="step-item">
+          <div class="step-num">06</div>
+          <h5>Reset PM — Oil Cleanser</h5>
+          <p>Chandan + BHA 0.3% + Micellar · Dissolves sunscreen, makeup + clears pores overnight · 10ml</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">07</div>
+          <h5>Repair — Night Serum</h5>
+          <p>Bakuchiol 1% + Niacinamide + Tranexamic Acid · Retinol alternative that works while you sleep · 10ml</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">08</div>
+          <h5>Rebuild — Night Cream</h5>
+          <p>Ceramide + Peptides + Saffron · Repairs skin barrier. Glowing skin by morning · 8ml</p>
+        </div>
+      </div>
+    </div>
+    <div class="solution-img">
+      <img src="sachets.jpg" alt="All 8 MELT sachets">
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-section" id="how">
-  <p class="section-label">How It Works</p>
-  <h2 class="section-title">Three steps. <em>Every day.</em></h2>
-  <div class="how-grid">
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-step-num">01</div>
-        <div>
-          <h3>Peel the Band</h3>
-          <p>Each morning, pull out your DAY bundle from the box. Slide off the kraft band — morning and night sachets, all sorted in order.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">02</div>
-        <div>
-          <h3>Tear & Apply</h3>
-          <p>Tear each sachet in order. Your exact daily dose — no measuring, no waste, no guessing. The sequence is done for you.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">03</div>
-        <div>
-          <h3>See the Glow</h3>
-          <p>A complete routine in under 2 minutes. By Day 15, your skin tells the story. That's the challenge.</p>
-        </div>
-      </div>
+<section class="how-section">
+  <div class="how-header">
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">Three steps. <em>Every day.</em></h2>
+  </div>
+  <div class="how-steps">
+    <div class="how-step">
+      <span class="how-step-num">01</span>
+      <h3>Peel the Band</h3>
+      <p>Each morning, pull out your DAY bundle from the box. Slide off the kraft band — morning and night sachets, sorted in order.</p>
     </div>
-    <div class="how-image">
-      <img src="tear.jpg" alt="Peeling the DAY 01 band from MELT bundle">
+    <div class="how-step">
+      <span class="how-step-num">02</span>
+      <h3>Tear &amp; Apply</h3>
+      <p>Tear each sachet in order. Your exact daily dose — no measuring, no waste, no guessing. The sequence is done for you.</p>
     </div>
+    <div class="how-step">
+      <span class="how-step-num">03</span>
+      <h3>See the Glow</h3>
+      <p>A complete routine in under 2 minutes. By Day 15, your skin tells the story. That's the challenge.</p>
+    </div>
+  </div>
+  <div class="how-img">
+    <img src="tear.jpg" alt="Peeling the DAY 01 band from MELT bundle">
   </div>
 </section>
 
 <!-- PRICING -->
 <section class="pricing-section" id="pricing">
-  <p class="section-label">Simple Pricing</p>
-  <h2 class="section-title">One decision. <em>Your skin wins.</em></h2>
+  <div class="pricing-header">
+    <span class="section-label">Simple Pricing</span>
+    <h2 class="section-title">One decision. <em>Your skin wins.</em></h2>
+  </div>
+
+  <!-- GUARANTEE BADGE — above pricing cards -->
+  <div class="pricing-guarantee">
+    <div class="pricing-guarantee-icon">🛡️</div>
+    <div class="pricing-guarantee-text">
+      <h4>Not happy? Full refund. No forms, no questions.</h4>
+      <p>Message us on WhatsApp. Full replacement or refund within 48 hours. We earn your trust or we don't deserve your money.</p>
+    </div>
+  </div>
+
   <div class="pricing-grid">
 
     <div class="price-card">
@@ -1131,7 +768,7 @@
       <p class="price-sub">15-day morning kit · Free shipping</p>
       <ul class="price-features">
         <li>15 Morning Bundles (Day 1–15)</li>
-        <li>5 steps daily — Cleanser, Toner, Serum, Moisturiser, Finishing</li>
+        <li>5 steps daily — Cleanser, Toner, Serum, Moisturiser, Pore Control</li>
         <li>Neem + Haldi + Centella</li>
         <li>75 pre-measured sachets total</li>
       </ul>
@@ -1139,7 +776,7 @@
     </div>
 
     <div class="price-card featured">
-      <div class="featured-tag">Most Popular</div>
+      <div class="price-tag">Most Popular</div>
       <p class="price-name">Complete Kit</p>
       <div class="price-amount">₹1,999</div>
       <p class="price-sub">Morning + Night · Save vs buying separate</p>
@@ -1153,18 +790,21 @@
     </div>
 
   </div>
+
   <div class="pricing-trust">
-    <span class="trust-item">✦ Secure Razorpay</span>
-    <span class="trust-item">✦ UPI · Cards · Net Banking</span>
-    <span class="trust-item">✦ Free shipping pan India</span>
-    <span class="trust-item">✦ Ships in 6 weeks</span>
+    <span>✦ Secure Razorpay</span>
+    <span>✦ UPI · Cards · Net Banking</span>
+    <span>✦ Free shipping pan India</span>
+    <span>✦ Pre-order · First batch of 50</span>
   </div>
 </section>
 
 <!-- WHY MELT -->
 <section class="why-section" id="why">
-  <p class="section-label">Why MELT</p>
-  <h2 class="section-title">Different in <em>every way.</em></h2>
+  <div class="why-header">
+    <span class="section-label">Why MELT</span>
+    <h2 class="section-title">Different in <em>every way.</em></h2>
+  </div>
   <div class="why-grid">
     <div class="why-card">
       <div class="why-icon">🌿</div>
@@ -1201,20 +841,26 @@
 
 <!-- FAQ -->
 <section class="faq-section" id="faq">
-  <p class="section-label">Questions</p>
-  <h2 class="section-title">We've got <em>answers.</em></h2>
+  <div class="faq-header">
+    <span class="section-label">Questions</span>
+    <h2 class="section-title">We've got <em>answers.</em></h2>
+  </div>
   <div class="faq-grid">
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Is MELT safe for all skin types? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Yes. MELT is formulated specifically for Indian skin — oily, dry, combination, and sensitive. The actives are at concentrations safe for daily use from Day 1.</div>
+      <button class="faq-q" onclick="toggleFaq(this)">Is MELT safe for acne-prone skin? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes. MELT is formulated specifically for oily and acne-prone Indian skin. All actives — Salicylic Acid, Niacinamide, Bakuchiol — are at concentrations clinically safe for daily use from Day 1. No purging phase.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">When will my order ship? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">We're taking pre-orders for our first batch of 50 units. Your kit ships within 6 weeks. We'll update you on WhatsApp every step of the way.</div>
+      <div class="faq-a">We're manufacturing the first batch of 50 kits fresh-to-order. Estimated dispatch is 6 weeks from order date. You'll get WhatsApp updates at every step — zero ghosting.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">What if I don't like it? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Message us on WhatsApp. Full replacement or refund — no catch, no forms. We earn your trust or we don't deserve your money.</div>
+      <button class="faq-q" onclick="toggleFaq(this)">What does the ₹199 reserve advance mean? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">₹199 secures your spot in the first batch of 50 kits. It's deducted from your total — you pay the remaining ₹1,800 right before your kit is dispatched. If you change your mind before dispatch, full ₹199 refund, no questions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What if I don't see results? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Message us on WhatsApp. Full replacement or refund — no forms, no catch. We earn your trust or we don't deserve your money.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">Is the packaging actually biodegradable? <span class="faq-arrow">+</span></button>
@@ -1222,23 +868,19 @@
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">How do I use the DAY bundles? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Each morning, pull out that day's bundle and slide off the paper band. Use the 5 morning sachets in order. Before bed, use the 3 night sachets. Done in under 2 minutes.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">How do I pay and confirm my order? <span class="faq-arrow">+</span></button>
-      <div class="faq-a">Click any Order button, fill your shipping details, then complete payment via Razorpay — UPI, cards, and net banking all work. You'll get instant confirmation and we'll follow up on WhatsApp.</div>
+      <div class="faq-a">Each morning, pull out that day's bundle and slide off the paper band. Use the 5 morning sachets in order. Before bed, use the 3 night sachets. Total time: under 2 minutes.</div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <p class="section-label" style="color:var(--gold);">Limited First Batch</p>
+  <span class="section-label">Limited First Batch</span>
   <h2 class="section-title">Start your <em>15-day journey.</em></h2>
-  <p>50 units only. Free shipping pan India. Your skin in 15 days.</p>
+  <p>50 units only. Free shipping pan India. Reserve your spot for ₹199.</p>
   <div class="final-buttons">
-    <button class="btn-gold" onclick="openModal('complete')">Complete Kit — ₹1,999</button>
-    <button class="btn-outline-light" onclick="openModal('morning')">Morning Only — ₹1,299</button>
+    <button class="btn-gold" onclick="openModal('reserve')">Reserve My Kit — ₹199</button>
+    <button class="btn-outline-light" onclick="openModal('complete')">Order Full Kit — ₹1,999</button>
   </div>
 </section>
 
@@ -1255,58 +897,63 @@
     <button class="modal-close" onclick="closeModal()">×</button>
     <div class="modal-badge">Secure Order</div>
     <h2>Almost there.</h2>
-    <p class="modal-product">You're ordering: <strong id="modalProductName">Complete Kit — ₹1,999</strong><br>We need your delivery address before payment.</p>
+    <p class="modal-product" id="modalProductDesc">You're reserving: <strong>Complete Kit</strong><br>₹199 now · ₹1,800 before dispatch.</p>
 
-    <form id="orderForm" onsubmit="submitOrder(event)">
+    <div id="orderForm">
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" id="fname" placeholder="As on ID" required>
+        <input type="text" id="fname" placeholder="As on ID">
       </div>
       <div class="form-group">
         <label>WhatsApp Number</label>
-        <input type="tel" id="fphone" placeholder="+91 98765 43210" required>
+        <input type="tel" id="fphone" placeholder="+91 98765 43210">
       </div>
       <div class="form-group">
         <label>Full Delivery Address</label>
-        <textarea id="faddress" placeholder="Flat/House No, Street, Area, City" required></textarea>
+        <textarea id="faddress" placeholder="Flat/House No, Street, Area, City"></textarea>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>Pincode</label>
-          <input type="text" id="fpincode" placeholder="110001" maxlength="6" required>
+          <input type="text" id="fpincode" placeholder="110001" maxlength="6">
         </div>
         <div class="form-group">
           <label>State</label>
-          <input type="text" id="fstate" placeholder="Delhi" required>
+          <input type="text" id="fstate" placeholder="Delhi">
         </div>
       </div>
-      <button type="submit" class="modal-submit" id="submitBtn">Continue to Payment →</button>
+      <button class="modal-submit" id="submitBtn" onclick="submitOrder()">Continue to Payment →</button>
       <p class="modal-note">Your details are saved securely. After submitting, you'll be redirected to Razorpay to complete payment.</p>
-    </form>
+    </div>
   </div>
 </div>
 
 <script>
-  // PRODUCT CONFIG
   const products = {
+    reserve: {
+      label: 'Complete Kit — Reserve Spot',
+      desc: "You're reserving: <strong>Complete Kit</strong><br>₹199 now · ₹1,800 before dispatch. Full refund if you cancel.",
+      link: 'https://rzp.io/rzp/QDoWpIb'
+    },
     morning: {
-      name: 'Morning Only — ₹1,299',
+      label: 'Morning Only — ₹1,299',
+      desc: "You're ordering: <strong>Morning Only Kit — ₹1,299</strong><br>Full payment today. Free shipping pan India.",
       link: 'https://rzp.io/rzp/hAwWQbEg'
     },
     complete: {
-      name: 'Complete Kit — ₹1,999',
+      label: 'Complete Kit — ₹1,999',
+      desc: "You're ordering: <strong>Complete Kit — ₹1,999</strong><br>Full payment today. Free shipping pan India.",
       link: 'https://rzp.io/rzp/cfHG9iC'
     }
   };
 
-  let currentProduct = 'complete';
+  let currentProduct = 'reserve';
 
   function openModal(product) {
     currentProduct = product;
-    document.getElementById('modalProductName').textContent = products[product].name;
+    document.getElementById('modalProductDesc').innerHTML = products[product].desc;
     document.getElementById('orderModal').classList.add('active');
     document.body.style.overflow = 'hidden';
-    // Push hash so back button closes modal, not the page
     history.pushState({ modal: true }, '', '#order');
   }
 
@@ -1316,8 +963,7 @@
     if (location.hash === '#order') history.back();
   }
 
-  // Back button closes modal
-  window.addEventListener('popstate', function(e) {
+  window.addEventListener('popstate', function() {
     if (document.getElementById('orderModal').classList.contains('active')) {
       document.getElementById('orderModal').classList.remove('active');
       document.body.style.overflow = '';
@@ -1328,23 +974,28 @@
     if (e.target === this) closeModal();
   });
 
-  async function submitOrder(e) {
-    e.preventDefault();
+  async function submitOrder() {
     const btn = document.getElementById('submitBtn');
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const address = document.getElementById('faddress').value.trim();
+    const pincode = document.getElementById('fpincode').value.trim();
+    const state = document.getElementById('fstate').value.trim();
+
+    if (!name || !phone || !address || !pincode || !state) {
+      alert('Please fill in all fields before continuing.');
+      return;
+    }
+
     btn.disabled = true;
     btn.textContent = 'Saving...';
 
     const data = {
-      product: products[currentProduct].name,
-      name: document.getElementById('fname').value,
-      phone: document.getElementById('fphone').value,
-      address: document.getElementById('faddress').value,
-      pincode: document.getElementById('fpincode').value,
-      state: document.getElementById('fstate').value,
+      product: products[currentProduct].label,
+      name, phone, address, pincode, state,
+      timestamp: new Date().toISOString()
     };
 
-    // Submit to Formspree — replace YOUR_FORM_ID with your actual Formspree form ID
-    // Sign up free at formspree.io, create a form, paste the ID below
     const FORMSPREE_ID = 'xdayezko';
 
     try {
@@ -1354,38 +1005,32 @@
         body: JSON.stringify(data)
       });
     } catch(err) {
-      // Even if formspree fails, still redirect to payment
-      console.log('Form submit error, proceeding to payment anyway');
+      console.log('Formspree error, proceeding to payment');
     }
 
-    // Redirect to Razorpay
     window.location.href = products[currentProduct].link;
   }
 
-  // FAQ toggle
   function toggleFaq(btn) {
     const item = btn.parentElement;
-    item.classList.toggle('open');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   }
 
-  // Smooth nav highlight
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 80;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      if (scrollY >= sectionTop && scrollY < sectionTop + section.offsetHeight) {
         document.querySelectorAll('.nav-links a').forEach(a => {
           a.style.color = '';
-          if (a.getAttribute('href') === `#${section.id}`) {
-            a.style.color = 'var(--kraft)';
-          }
+          if (a.getAttribute('href') === `#${section.id}`) a.style.color = 'var(--kraft)';
         });
       }
     });
   });
 </script>
-
 </body>
 </html>
